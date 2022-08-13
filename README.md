@@ -16,7 +16,7 @@ capaces de modificar información sensible de la empresa.
 
 Adicionalmente, debido a que las transacciones contables son supremamente delicadas, el sistema debería permitir llevar una trazabilidad de quién registró cada transacción, por lo cual el sistema debe contar con un sistema de autenticación.
 
-
+El curso cuenta con una sesión de generalidades, en la que encontrarás el programa detallado, la presentación, la ruta de aprendizaje, la metodología que se va a seguir y la manera en que funciona el curso.
 
 
 
@@ -25,6 +25,7 @@ Adicionalmente, debido a que las transacciones contables son supremamente delica
 - [@erossiano](https://www.github.com/erossiano)
 - [@DDNARVAEZ](https://www.github.com/DDNARVAEZ)
 - [@jac5341931](https://github.com/jac5341931)
+- [@JuanPAngulo](https://github.com/JuanPAngulo)
   
 
 
