@@ -14,11 +14,17 @@ nuevos movimientos de dinero. Sin embargo, dichos usuarios no deben ser
 capaces de modificar información sensible de la empresa.
 
 
+Adicionalmente, debido a que las transacciones contables son supremamente delicadas, el sistema debería permitir llevar una trazabilidad de quién registró cada transacción, por lo cual el sistema debe contar con un sistema de autenticación.
+
+
+
+
 
 ## Authors
 
 - [@erossiano](https://www.github.com/erossiano)
 - [@DDNARVAEZ](https://www.github.com/DDNARVAEZ)
+- [@jac5341931](https://github.com/jac5341931)
   
 
 
