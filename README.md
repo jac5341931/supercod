@@ -25,11 +25,13 @@ https://www.figma.com/file/szHaeruyqDymBYHlZAgO2t/Diagrama-Entidad-Relaci%C3%B3n
 
 ## Authors
 
-- [@erossiano](https://www.github.com/erossiano)
-- [@DDNARVAEZ](https://www.github.com/DDNARVAEZ)
-- [@jac5341931](https://github.com/jac5341931)
-- [@JuanPAngulo](https://github.com/JuanPAngulo)
-- [@andreaSanchezC](https://github.com/andreaSanchezC)
+- [@erossiano](https://www.github.com/erossiano) - Eduar Erossiano
+- [@DDNARVAEZ](https://www.github.com/DDNARVAEZ) - Daniel Narvaes
+- [@jac5341931](https://github.com/jac5341931) - Julio Casanova
+- [@JuanPAngulo](https://github.com/JuanPAngulo) - Juan Angulo
+- [@dgzamo](https://github.com/dgzamo) - Daryl Leguizamo
+- [@andreaSanchezC](https://github.com/andreaSanchezC) - Andrea Sánchez
+- 
   
 
 
