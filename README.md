@@ -18,30 +18,7 @@ Adicionalmente, debido a que las transacciones contables son supremamente delica
 
 El curso cuenta con una sesión de generalidades, en la que encontrarás el programa detallado, la presentación, la ruta de aprendizaje, la metodología que se va a seguir y la manera en que funciona el curso.
 
-Seguimiento y evaluación. Son actividades con experiencias de aprendizaje planeadas y diseñadas para que desarrolles un conjunto de conocimientos, habilidades y actitudes que te permitan alcanzar los objetivos propuestos en cada ciclo de formación.
 
-Nuestra informacion
-
-Edward Rossiano Ponton
-CC 72334772
-Correo electrónico: edwardrossiano@gmail.com
-
-------------------------------------------------
-
-Daniel David Narváez Castillo
-CC 1001158316
-Correo electrónico: ddnarvaez23@gmail.com
-
-------------------------------------------------
-
-Daryl Giselle Leguizamo Rodríguez
-CC 1192755780
-Correo electrónico: dayisleguizamo@hotmail.com
-
-------------------------------------------------
-
-Juan Pablo Angulo Hernandez                                                                                                                                                                           CC 16927360                                                                                                                                                                                                    
-Correo electrónico:  Jp.angara7@hotmail.com
 
 ## Authors
 
@@ -49,7 +26,7 @@ Correo electrónico:  Jp.angara7@hotmail.com
 - [@DDNARVAEZ](https://www.github.com/DDNARVAEZ)
 - [@jac5341931](https://github.com/jac5341931)
 - [@JuanPAngulo](https://github.com/JuanPAngulo)
-- [@dgzamo](https://github.com/dgzamo)
+  
 
 
 
