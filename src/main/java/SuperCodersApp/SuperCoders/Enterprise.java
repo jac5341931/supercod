@@ -1,3 +1,4 @@
+package SuperCodersApp.SuperCoders;
 public class Enterprise {
 
     private String name;
@@ -44,7 +45,8 @@ public class Enterprise {
         this.NIT = NIT;
     }
 
-    public String toString1() {
+@Override
+    public String toString() {
         return "Enterprise{" +
                 "name='" + name + '\'' +
                 ", address='" + address + '\'' +

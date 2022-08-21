@@ -1,3 +1,4 @@
+package SuperCodersApp.SuperCoders;
 public class Employee {
 /*    Es posible crear una nueva instancia de la clase
 "Empleado"
@@ -63,7 +64,8 @@ public class Employee {
     }
 
 
-    public String toString1() {
+    @Override
+    public String toString() {
         return "Employee{" +
                 "name='" + this.name + '\'' +
                 ", email='" + this.email + '\'' +
