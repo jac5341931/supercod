@@ -18,6 +18,22 @@ public class SuperCodersApplication {
 
 		System.out.println(aEnterprise.toString());
 		System.out.println(anEmployee.toString());
+
+		Transaction aTransaction1 = new Transaction("Concept #1", 100.75f, anEmployee, aEnterprise);
+		Transaction aTransaction2 = new Transaction("Concept #2", -50.30f, anEmployee, aEnterprise);
+		Transaction aTransaction3 = new Transaction("Concept #3", -30.60f, anEmployee, aEnterprise);
+
+		System.out.println(aTransaction1.getEmployeeName());
+		System.out.println(aTransaction1.getEnterpriseName());
+
+
+		System.out.println(aTransaction1.toString());
+
+		System.out.println(aTransaction2.toString());
+
+		System.out.println(aTransaction3.toString());
+
+
 	}
 
 }
