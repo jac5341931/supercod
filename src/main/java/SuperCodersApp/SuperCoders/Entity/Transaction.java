@@ -1,14 +1,28 @@
-package SuperCodersApp.SuperCoders;
+package SuperCodersApp.SuperCoders.Entity;
 
+import javax.persistence.*;
 import java.time.LocalDate;
 
+@Entity
 public class Transaction {
+    @Id
+    private long id;
+    @Column(name="concept")
     private String concept;
+    @Column(name="amount")
     private float amount;
+    @Column(name="employee")
+    @ManyToOne
     private Employee employee;
+
+    @Column(name="enterprise")
+    @ManyToOne
     private Enterprise enterprise;
+    @Column(name="createdAt")
     private LocalDate createdAt;
 
+    public Transaction() {
+    }
     public Transaction(String concept, float amount, Employee anEmployee, Enterprise aEnterprise) {
         this.concept = concept;
         this.amount = amount;

@@ -1,5 +1,9 @@
 package SuperCodersApp.SuperCoders;
 
+import SuperCodersApp.SuperCoders.Entity.Employee;
+import SuperCodersApp.SuperCoders.Entity.Enterprise;
+import SuperCodersApp.SuperCoders.Entity.Role;
+import SuperCodersApp.SuperCoders.Entity.Transaction;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
