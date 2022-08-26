@@ -7,6 +7,7 @@ import javax.persistence.*;
 public class Employee {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     @Column(name = "name")
     private String name;
@@ -19,8 +20,7 @@ public class Employee {
     @Column(name = "role")
     private Role role;
 
-    public Employee() {
-        this.role = Role.Operator;
+    protected Employee() {
     }
     public Employee(String name, String email) {
         this.name = name;

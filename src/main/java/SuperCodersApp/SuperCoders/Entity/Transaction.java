@@ -6,6 +6,7 @@ import java.time.LocalDate;
 @Entity
 public class Transaction {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     @Column(name="concept")
     private String concept;
@@ -21,7 +22,7 @@ public class Transaction {
     @Column(name="createdAt")
     private LocalDate createdAt;
 
-    public Transaction() {
+    protected Transaction() {
     }
     public Transaction(String concept, float amount, Employee anEmployee, Enterprise aEnterprise) {
         this.concept = concept;

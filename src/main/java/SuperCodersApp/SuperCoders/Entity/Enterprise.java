@@ -1,14 +1,12 @@
 package SuperCodersApp.SuperCoders.Entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "enterprise")
 public class Enterprise {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     @Column(name = "name", unique = true)
     private String name;
@@ -19,7 +17,7 @@ public class Enterprise {
     @Column(name = "document", unique = true)
     private String NIT;
 
-    public Enterprise() {
+    protected Enterprise() {
     }
     public Enterprise(String name, String address, String phone, String NIT) {
         this.name = name;

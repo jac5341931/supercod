@@ -17,7 +17,7 @@ public class Profile {
     @Column(name = "updatedAt")
     private LocalDate updatedAt;
 
-    public Profile(){
+    protected Profile(){
     }
 
     public Profile(String id, String image, String phone) {
