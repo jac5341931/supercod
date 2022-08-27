@@ -24,6 +24,8 @@ public class Profile {
         this.id = id;
         this.image = image;
         this.phone = phone;
+        this.createdAt = LocalDate.now();
+        this.updatedAt = LocalDate.now();
     }
 
     public String getId() {
@@ -58,4 +60,7 @@ public class Profile {
         return updatedAt;
     }
 
+    public void setUpdatedAt(LocalDate updatedAt) {
+        this.updatedAt = updatedAt.now();
+    }
 }

@@ -1,4 +1,4 @@
-package SuperCodersApp.SuperCoders.Repository;
+/*package SuperCodersApp.SuperCoders.Repository;
 
 import SuperCodersApp.SuperCoders.Entity.Enterprise;
 import net.bytebuddy.asm.Advice;
@@ -10,4 +10,4 @@ public interface EnterpriseRepository extends CrudRepository<Enterprise, Long>{
 
     Enterprise findById(long Id);
 
-}
+}*/

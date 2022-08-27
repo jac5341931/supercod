@@ -26,6 +26,10 @@ public class Enterprise {
         this.NIT = NIT;
     }
 
+    public long getId() {
+        return id;
+    }
+
     public String getName() {
         return name;
     }
@@ -58,7 +62,7 @@ public class Enterprise {
         this.NIT = NIT;
     }
 
-@Override
+/*@Override
     public String toString() {
         return "Enterprise{" +
                 "name='" + name + '\'' +
@@ -66,5 +70,5 @@ public class Enterprise {
                 ", phone='" + phone + '\'' +
                 ", NIT='" + NIT + '\'' +
                 '}';
-    }
+    }*/
 }

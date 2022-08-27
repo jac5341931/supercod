@@ -13,7 +13,6 @@ public class Employee {
     private String name;
     @Column(name = "email")
     private String email;
-    @Column(name = "enterprise")
     @ManyToOne
     private Enterprise enterprise;
 
@@ -28,6 +27,9 @@ public class Employee {
         this.role = Role.Operator;
     }
 
+    public long getId() {
+        return id;
+    }
     public String getName() {
         return name;
     }

@@ -12,15 +12,17 @@ public class Transaction {
     private String concept;
     @Column(name="amount")
     private float amount;
-    @Column(name="employee")
     @ManyToOne
     private Employee employee;
 
-    @Column(name="enterprise")
     @ManyToOne
     private Enterprise enterprise;
     @Column(name="createdAt")
     private LocalDate createdAt;
+
+    @Column(name="updatedAt")
+    private LocalDate updatedAt;
+
 
     protected Transaction() {
     }
@@ -30,6 +32,7 @@ public class Transaction {
         this.employee = anEmployee;
         this.enterprise = aEnterprise;
         this.createdAt = LocalDate.now();
+        this.updatedAt = LocalDate.now();
     }
 
     public String getConcept() {
@@ -56,7 +59,6 @@ public class Transaction {
         return this.employee.getName();
     }
 
-
     public void setEmployee(Employee employee) {
         this.employee = employee;
     }
@@ -75,12 +77,19 @@ public class Transaction {
         return createdAt.toString();
     }
 
-    public void setCreatedAt() {
-        this.createdAt = LocalDate.now();
+    public LocalDate getUpdatedAt() {
+        return this.updatedAt;
+    }
+    public void setUpdatedAt(LocalDate updatedAt) {
+        this.updatedAt = updatedAt.now();
     }
 
+    /*public void setCreatedAt() {
+        this.createdAt = LocalDate.now();
+    }*/
 
-    @Override
+
+/*    @Override
     public String toString() {
         return "Transaction{" +
                 "concept='" + getConcept() + '\'' +
@@ -89,5 +98,5 @@ public class Transaction {
                 ", enterprise=" + enterprise.getName() +
                 ", createdAt=" + getCreatedAt() +
                 '}';
-    }
+    }*/
 }
