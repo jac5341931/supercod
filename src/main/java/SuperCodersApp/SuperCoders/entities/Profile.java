@@ -1,4 +1,4 @@
-package SuperCodersApp.SuperCoders.Entity;
+package SuperCodersApp.SuperCoders.entities;
 
 import javax.persistence.*;
 import java.time.LocalDate;

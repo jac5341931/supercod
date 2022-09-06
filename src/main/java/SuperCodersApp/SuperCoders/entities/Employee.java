@@ -1,4 +1,4 @@
-package SuperCodersApp.SuperCoders.Entity;
+package SuperCodersApp.SuperCoders.entities;
 
 import javax.persistence.*;
 
@@ -24,6 +24,7 @@ public class Employee {
     public Employee(String name, String email) {
         this.name = name;
         this.email = email;
+        this.enterprise = new Enterprise();
         this.role = Role.Operator;
     }
 

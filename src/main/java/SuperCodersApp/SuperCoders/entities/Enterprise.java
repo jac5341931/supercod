@@ -1,6 +1,7 @@
-package SuperCodersApp.SuperCoders.Entity;
+package SuperCodersApp.SuperCoders.entities;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "enterprise")
@@ -8,22 +9,27 @@ public class Enterprise {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+    @Column(name = "document", unique = true)
+    private String NIT;
     @Column(name = "name", unique = true)
     private String name;
     @Column(name = "address")
     private String address;
     @Column(name = "phone")
     private String phone;
-    @Column(name = "document", unique = true)
-    private String NIT;
+
+    @OneToMany(mappedBy = "enterprise", fetch = FetchType.LAZY)
+    private List<Employee> users;
+
 
     protected Enterprise() {
     }
-    public Enterprise(String name, String address, String phone, String NIT) {
+    public Enterprise(String name, String address, String phone, String NIT, List<Employee> users) {
         this.name = name;
         this.address = address;
         this.phone = phone;
         this.NIT = NIT;
+        this.users = users;
     }
 
     public long getId() {
@@ -62,7 +68,19 @@ public class Enterprise {
         this.NIT = NIT;
     }
 
-/*@Override
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public List<Employee> getUsers() {
+        return users;
+    }
+
+    public void setUsers(List<Employee> users) {
+        this.users = users;
+    }
+
+    /*@Override
     public String toString() {
         return "Enterprise{" +
                 "name='" + name + '\'' +
