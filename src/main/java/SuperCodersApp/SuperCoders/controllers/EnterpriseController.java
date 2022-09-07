@@ -29,22 +29,17 @@ public class EnterpriseController {
 
 
     @PostMapping
-    public Boolean setEnterpriseS(@RequestBody Enterprise enterprise) {
-        return this.enterpriseServices.setEnterpriseS(enterprise);
+    public Boolean createEnterpriseS(@RequestBody Enterprise enterprise) {
+        return this.enterpriseServices.createEnterpriseS(enterprise);
     }
 
     @PatchMapping("/{id}")
-    public Boolean updateEnterpriseS(@PathVariable("id") long id, @RequestBody Enterprise enterprise){
-        Enterprise e1 = this.enterpriseServices.getEnterpriseS(id);
-        if( e1 != null && e1.getId() == id){
-            this.enterpriseServices.setEnterpriseS(enterprise);
-            return true;
-        }
-        return false;
+    public Boolean updateEnterpriseS(@PathVariable("id") long id, @RequestBody Enterprise enterprise) {
+        return this.enterpriseServices.updateEnterpriseS(id, enterprise);
     }
 
     @DeleteMapping("/{id}")
-    public Boolean deleteEnterprise(@PathVariable("id") long id){
+    public Boolean deleteEnterprise(@PathVariable("id") long id) {
         return this.enterpriseServices.deleteEnterpriseS(id);
     }
 }

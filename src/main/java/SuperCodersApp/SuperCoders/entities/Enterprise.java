@@ -18,7 +18,11 @@ public class Enterprise {
     @Column(name = "phone")
     private String phone;
 
-    @OneToMany(mappedBy = "enterprise", fetch = FetchType.LAZY)
+    @OneToMany(
+            mappedBy = "enterprise"/*,
+            cascade = CascadeType.ALL,
+            orphanRemoval = true*/
+    )
     private List<Employee> users;
 
 

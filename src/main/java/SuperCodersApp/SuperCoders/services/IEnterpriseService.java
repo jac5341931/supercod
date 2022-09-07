@@ -13,7 +13,9 @@ public interface IEnterpriseService {
     public Enterprise getEnterpriseS(long id);
 
     //Create
-    public Boolean setEnterpriseS(Enterprise enterprise);
+    public Boolean createEnterpriseS(Enterprise enterprise);
+
+    public Boolean updateEnterpriseS(long id, Enterprise enterprise);
 
     //Delete
     public Boolean deleteEnterpriseS(long id);

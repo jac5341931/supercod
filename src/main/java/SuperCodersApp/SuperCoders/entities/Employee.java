@@ -13,7 +13,7 @@ public class Employee {
     private String name;
     @Column(name = "email")
     private String email;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private Enterprise enterprise;
 
     @Column(name = "role")

@@ -27,14 +27,33 @@ public class EnterpriseService implements IEnterpriseService {
     }
 
     @Override
-    public Boolean setEnterpriseS(Enterprise enterprise) {
-        try {
-            this.enterpriseRepository.save(enterprise);
-            return true;
-        } catch (Exception e) {
-            System.out.println("Ya existe este documento, nombre de empresa, id");
+    public Boolean createEnterpriseS(Enterprise enterprise) {
+        Enterprise e1 = this.enterpriseRepository.findById(enterprise.getId());
+        if(e1 != null){
+            return false;
+        }else{
+            try {
+                this.enterpriseRepository.save(enterprise);
+                return true;
+            }catch(Exception e){
+                return false;
+            }
         }
-        return false;
+    }
+
+    @Override
+    public Boolean updateEnterpriseS(long id, Enterprise enterprise) {
+        Enterprise e1 = this.enterpriseRepository.findById(id);
+        if(e1.getName().equals(enterprise.getName()) || e1.getNIT().equals(enterprise.getNIT()) ){
+            return false;
+        }else {
+            try {
+                this.enterpriseRepository.save(enterprise);
+                return true;
+            }catch(Exception e){
+                return false;
+            }
+        }
     }
 
     @Override
