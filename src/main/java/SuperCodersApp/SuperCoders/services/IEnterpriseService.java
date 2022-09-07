@@ -7,16 +7,16 @@ import java.util.List;
 public interface IEnterpriseService {
 
     //Get all
-    public List<Enterprise> getAllEnterpriseS();
+    List<Enterprise> getAllEnterpriseS();
 
     //Get one
-    public Enterprise getEnterpriseS(long id);
+    Enterprise getEnterpriseS(long id);
 
     //Create
-    public Boolean createEnterpriseS(Enterprise enterprise);
+    Boolean createEnterpriseS(Enterprise enterprise);
 
-    public Boolean updateEnterpriseS(long id, Enterprise enterprise);
+    Boolean updateEnterpriseS(Enterprise enterprise);
 
     //Delete
-    public Boolean deleteEnterpriseS(long id);
+    Boolean deleteEnterpriseS(long id);
 }

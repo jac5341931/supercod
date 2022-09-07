@@ -35,7 +35,16 @@ public class EnterpriseController {
 
     @PatchMapping("/{id}")
     public Boolean updateEnterpriseS(@PathVariable("id") long id, @RequestBody Enterprise enterprise) {
-        return this.enterpriseServices.updateEnterpriseS(id, enterprise);
+        Enterprise e1 = this.enterpriseServices.getEnterpriseS(id);
+        if(e1 != null){
+            try{
+                return this.enterpriseServices.updateEnterpriseS(enterprise);
+            }catch(Exception e){
+                return false;
+            }
+        }else{
+            return false;
+        }
     }
 
     @DeleteMapping("/{id}")
