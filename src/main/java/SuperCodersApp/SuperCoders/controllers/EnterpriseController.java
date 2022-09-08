@@ -36,13 +36,13 @@ public class EnterpriseController {
     @PatchMapping("/{id}")
     public Boolean updateEnterpriseS(@PathVariable("id") long id, @RequestBody Enterprise enterprise) {
         Enterprise e1 = this.enterpriseServices.getEnterpriseS(id);
-        if(e1 != null){
-            try{
+        if (e1 != null) {
+            try {
                 return this.enterpriseServices.updateEnterpriseS(enterprise);
-            }catch(Exception e){
+            } catch (Exception e) {
                 return false;
             }
-        }else{
+        } else {
             return false;
         }
     }

@@ -1,5 +1,8 @@
 package SuperCodersApp.SuperCoders.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import net.bytebuddy.asm.Advice;
+
 import javax.persistence.*;
 
 @Entity
@@ -14,6 +17,7 @@ public class Employee {
     @Column(name = "email")
     private String email;
     @ManyToOne(fetch = FetchType.LAZY)
+    //@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     private Enterprise enterprise;
 
     @Column(name = "role")
@@ -21,15 +25,19 @@ public class Employee {
 
     protected Employee() {
     }
-    public Employee(String name, String email) {
+    public Employee(String name, String email, Enterprise enterprise) {
         this.name = name;
         this.email = email;
-        this.enterprise = new Enterprise();
+        this.enterprise = enterprise;
         this.role = Role.Operator;
     }
 
     public long getId() {
         return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
     public String getName() {
         return name;
@@ -74,7 +82,7 @@ public class Employee {
         this.role = role;
     }
 
-
+/*
     @Override
     public String toString() {
         return "Employee{" +
@@ -83,5 +91,5 @@ public class Employee {
                 ", enterprise=" + getEnterpriseName() +
                 ", role=" + getRoleName() +
                 '}';
-    }
+    }*/
 }

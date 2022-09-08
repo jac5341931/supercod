@@ -19,7 +19,7 @@ public class Enterprise {
     private String phone;
 
     @OneToMany(
-            mappedBy = "enterprise"/*,
+            mappedBy = "id"/*,
             cascade = CascadeType.ALL,
             orphanRemoval = true*/
     )
