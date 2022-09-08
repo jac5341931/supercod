@@ -3,7 +3,7 @@ package SuperCodersApp.SuperCoders.entities;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "Employee")
+@Table(name = "employee")
 public class Employee {
 
     @Id
@@ -55,12 +55,6 @@ public class Employee {
         return role;
     }
 
-    public String getRoleName(){
-        return switch (this.role) {
-            case Admin -> "Admin";
-            case Operator -> "Operator";
-        };
-    }
     public void setRole(Role roleName) {
         this.role = roleName;
     }

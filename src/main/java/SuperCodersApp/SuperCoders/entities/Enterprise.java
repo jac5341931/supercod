@@ -18,6 +18,9 @@ public class Enterprise {
     @Column(name = "phone")
     private String phone;
 
+    @OneToMany(fetch = FetchType.LAZY)
+    private List<Employee> employees;
+
     protected Enterprise() {
     }
     public Enterprise(String name, String address, String phone, String NIT) {
@@ -65,5 +68,13 @@ public class Enterprise {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public List<Employee> getEmployees() {
+        return employees;
+    }
+
+    public void setEmployees(List<Employee> employees) {
+        this.employees = employees;
     }
 }
