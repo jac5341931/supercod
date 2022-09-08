@@ -1,0 +1,214 @@
+{
+	"info": {
+		"_postman_id": "cb988c8c-0000-491b-aa67-4f47694385a5",
+		"name": "Supabase",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23053471"
+	},
+	"item": [
+		{
+			"name": "Enterprise",
+			"item": [
+				{
+					"name": "GET All enterprises",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/enterprise",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"enterprise"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET a enterprise",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/enterprise/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"enterprise",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST a enterprise",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Mi empresa 1 de prueba Ltda\",\n    \"address\": \"Calle77 14-12544 Colombia\",\n    \"phone\": \"3002326175\",\n    \"users\": [],\n    \"nit\": \"1\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/enterprise",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"enterprise"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PATCH a enterprise",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 1,\n    \"name\": \"Mi empresa 1 de prueba Ltda\",\n    \"address\": \"Calle77 14-12544 Colombia\",\n    \"phone\": \"3002326175\",\n    \"users\": [],\n    \"nit\": \"1\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/enterprise/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"enterprise",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE a enterprise",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/enterprise/4",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"enterprise",
+								"4"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Employee",
+			"item": [
+				{
+					"name": "GET All employee",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/employee",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"employee"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET a employee",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/employee/2",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"employee",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST a employee",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Edward\",\n    \"email\": \"edward@gmail.com\",\n    \"role\": 1,\n    \"enterprise\": {\n                        \"id\": 1,\n                        \"name\": \"Mi empresa 1 de prueba Ltda\",\n                        \"address\": \"Calle77 14-12544 Colombia\",\n                        \"phone\": \"3002326175\",\n                        \"nit\": \"1\"\n                    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/employee",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"employee"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE employee",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/employee/2",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"employee",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
