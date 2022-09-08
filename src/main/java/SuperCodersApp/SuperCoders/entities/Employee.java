@@ -1,8 +1,5 @@
 package SuperCodersApp.SuperCoders.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import net.bytebuddy.asm.Advice;
-
 import javax.persistence.*;
 
 @Entity
@@ -16,12 +13,12 @@ public class Employee {
     private String name;
     @Column(name = "email")
     private String email;
-    @ManyToOne(fetch = FetchType.LAZY)
-    //@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-    private Enterprise enterprise;
-
-    @Column(name = "role")
+     @Column(name = "role")
+     @Enumerated(EnumType.ORDINAL)
     private Role role;
+    @ManyToOne
+    @JoinColumn(name = "enterprise")
+    private Enterprise enterprise;
 
     protected Employee() {
     }
@@ -35,7 +32,6 @@ public class Employee {
     public long getId() {
         return id;
     }
-
     public void setId(long id) {
         this.id = id;
     }
@@ -55,18 +51,6 @@ public class Employee {
         this.email = email;
     }
 
-    public Enterprise getEnterprise() {
-        return enterprise;
-    }
-
-    public String getEnterpriseName() {
-        return enterprise.getName();
-    }
-
-    public void setEnterprise(Enterprise enterprise) {
-        this.enterprise = enterprise;
-    }
-
     public Role getRole() {
         return role;
     }
@@ -77,19 +61,15 @@ public class Employee {
             case Operator -> "Operator";
         };
     }
-
-    public void setRole(Role role) {
-        this.role = role;
+    public void setRole(Role roleName) {
+        this.role = roleName;
     }
 
-/*
-    @Override
-    public String toString() {
-        return "Employee{" +
-                "name='" + this.name + '\'' +
-                ", email='" + this.email + '\'' +
-                ", enterprise=" + getEnterpriseName() +
-                ", role=" + getRoleName() +
-                '}';
-    }*/
+    public Enterprise getEnterprise() {
+        return enterprise;
+    }
+
+    public void setEnterprise(Enterprise enterprise) {
+        this.enterprise = enterprise;
+    }
 }

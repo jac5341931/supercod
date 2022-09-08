@@ -18,22 +18,13 @@ public class Enterprise {
     @Column(name = "phone")
     private String phone;
 
-    @OneToMany(
-            mappedBy = "id"/*,
-            cascade = CascadeType.ALL,
-            orphanRemoval = true*/
-    )
-    private List<Employee> users;
-
-
     protected Enterprise() {
     }
-    public Enterprise(String name, String address, String phone, String NIT, List<Employee> users) {
+    public Enterprise(String name, String address, String phone, String NIT) {
         this.name = name;
         this.address = address;
         this.phone = phone;
         this.NIT = NIT;
-        this.users = users;
     }
 
     public long getId() {
@@ -75,22 +66,4 @@ public class Enterprise {
     public void setId(long id) {
         this.id = id;
     }
-
-    public List<Employee> getUsers() {
-        return users;
-    }
-
-    public void setUsers(List<Employee> users) {
-        this.users = users;
-    }
-
-    /*@Override
-    public String toString() {
-        return "Enterprise{" +
-                "name='" + name + '\'' +
-                ", address='" + address + '\'' +
-                ", phone='" + phone + '\'' +
-                ", NIT='" + NIT + '\'' +
-                '}';
-    }*/
 }
