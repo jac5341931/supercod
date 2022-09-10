@@ -1,5 +1,7 @@
 package SuperCodersApp.SuperCoders.entities;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 
@@ -21,8 +23,8 @@ public class Transaction {
     private LocalDate createdAt;
 
     @Column(name="updatedAt")
+    @JsonFormat(pattern="yyyy-MM-dd")
     private LocalDate updatedAt;
-
 
     protected Transaction() {
     }
@@ -33,6 +35,14 @@ public class Transaction {
         this.enterprise = aEnterprise;
         this.createdAt = LocalDate.now();
         this.updatedAt = LocalDate.now();
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getConcept() {

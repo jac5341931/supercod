@@ -35,7 +35,7 @@ public class ProfileController {
     }
 
     @PatchMapping("/{id}")
-    public Boolean updateEnterpriseS(@PathVariable("id") long id, @RequestBody Profile profile) {
+    public Boolean updateProfile(@PathVariable("id") long id, @RequestBody Profile profile) {
         Profile e1 = this.profileService.getProfileS(id);
         if (e1 != null) {
             try {
@@ -49,7 +49,7 @@ public class ProfileController {
     }
 
     @DeleteMapping("/{id}")
-    public Boolean deleteEnterprise(@PathVariable("id") long id) {
+    public Boolean deleteProfile(@PathVariable("id") long id) {
         return this.profileService.deleteProfileS(id);
     }
 }

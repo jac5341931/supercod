@@ -131,13 +131,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/employee",
+							"raw": "localhost:8080/profile",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"employee"
+								"profile"
 							]
 						}
 					},
@@ -149,14 +149,14 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/profile/2",
+							"raw": "localhost:8080/profile/1",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
 								"profile",
-								"2"
+								"1"
 							]
 						}
 					},
@@ -169,7 +169,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\"username\": \"Mi perfil 1\",\n\"image\": \"https://www.google.com/images/branding/googlelogo/1x/googlelogo_light_color_272x92dp.png\",\n\"phone\": \"3002326175\",\n\"created_at\": \"2022/10/10\",\n\"updated_at\": \"2002/12/12\"\n}",
+							"raw": "    {\n        \"username\": \"Mi perfil 3\",\n        \"image\": \"https://www.google.com/images/branding/googlelogo/1x/googlelogo_light_color_272x92dp.png\",\n        \"phone\": \"3002326175\",\n        \"createdAt\": \"2022-10-10\",\n        \"updatedAt\": \"2022-11-11\"\n    }",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -283,14 +283,102 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/employee/2",
+							"raw": "localhost:8080/employee/7",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
 								"employee",
-								"2"
+								"7"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Transaction",
+			"item": [
+				{
+					"name": "GET All transaction",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/transaction",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"transaction"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET a transaction",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/transaction/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"transaction",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST a transaction",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"concept\": \"Concepto de la transaccion 1\",\n    \"amoiunt\": 1000,\n    \"role\": 1,\n    \"employee\": {\n                    \"id\": 8\n                },\n    \"enterprise\": {\n                        \"id\": 5\n                    },\n    \"createdAt\": \"2022-11-11\",\n    \"updatedAt\": \"2022-12-01\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/transaction",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"transaction"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE transaction",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/employee/7",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"employee",
+								"7"
 							]
 						}
 					},
