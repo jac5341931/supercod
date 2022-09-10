@@ -1,5 +1,6 @@
 package SuperCodersApp.SuperCoders.services;
 
+import SuperCodersApp.SuperCoders.entities.Employee;
 import SuperCodersApp.SuperCoders.entities.Enterprise;
 import SuperCodersApp.SuperCoders.repositories.IEnterpriseRepository;
 import org.springframework.stereotype.Service;
@@ -10,14 +11,26 @@ import java.util.List;
 public class EnterpriseService implements IEnterpriseService {
 
     private final IEnterpriseRepository enterpriseRepository;
+   /* private EmployeeService employeeService;*/
 
-    EnterpriseService(IEnterpriseRepository enterpriseRepository) {
+    EnterpriseService(IEnterpriseRepository enterpriseRepository/*, EmployeeService employeeService*/) {
         this.enterpriseRepository = enterpriseRepository;
+        /*this.employeeService = employeeService;*/
     }
 
     @Override
     public List<Enterprise> getAllEnterpriseS() {
-        return this.enterpriseRepository.findAll();
+        //List<Enterprise> enterprises = this.enterpriseRepository.findAll();
+       return this.enterpriseRepository.findAll();
+/*       for (Enterprise e: enterprises) {
+           List<Employee> employesList = this.employeeService.getAllEmployeeS();
+           System.out.println(" Empleados : " + employesList.toString());
+           e.setEmployees(employesList);
+       }*/
+
+       // return enterprises;
+
+
     }
 
     @Override
