@@ -17,14 +17,27 @@ public class Employee {
      @Enumerated(EnumType.ORDINAL)
     private Role role;
     @ManyToOne
-    @JoinColumn(name = "enterprise")
+    @JoinColumn(name = "enterprise_id")
     private Enterprise enterprise;
+
+    @OneToOne
+    @JoinColumn(name = "profile_id")
+    private Profile profile;
+
+    public Profile getProfile() {
+        return profile;
+    }
+
+    public void setProfile(Profile profile) {
+        this.profile = profile;
+    }
 
     protected Employee() {
     }
-    public Employee(String name, String email, Enterprise enterprise) {
+    public Employee(String name, String email, Profile profile,Enterprise enterprise) {
         this.name = name;
         this.email = email;
+        this.profile = profile;
         this.enterprise = enterprise;
         this.role = Role.Operator;
     }

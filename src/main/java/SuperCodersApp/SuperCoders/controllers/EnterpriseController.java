@@ -23,18 +23,18 @@ public class EnterpriseController {
     }
 
     @GetMapping("/{id}")
-    public Enterprise getEnterpriseS(@PathVariable("id") long id) {
+    public Enterprise getEnterprise(@PathVariable("id") long id) {
         return this.enterpriseServices.getEnterpriseS(id);
     }
 
 
     @PostMapping
-    public Boolean createEnterpriseS(@RequestBody Enterprise enterprise) {
+    public Boolean createEnterprise(@RequestBody Enterprise enterprise) {
         return this.enterpriseServices.createEnterpriseS(enterprise);
     }
 
     @PatchMapping("/{id}")
-    public Boolean updateEnterpriseS(@PathVariable("id") long id, @RequestBody Enterprise enterprise) {
+    public Boolean updateEnterprise(@PathVariable("id") long id, @RequestBody Enterprise enterprise) {
         Enterprise e1 = this.enterpriseServices.getEnterpriseS(id);
         if (e1 != null) {
             try {

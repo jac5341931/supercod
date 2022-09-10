@@ -1,39 +1,54 @@
 package SuperCodersApp.SuperCoders.entities;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "Profile")
+@Table(name = "profile")
 public class Profile {
     @Id
-    private String id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
+    private String username;
     @Column(name = "image")
     private String image;
     @Column(name = "phone")
     private String phone;
     @Column(name = "createdAt", updatable = false)
+    @JsonFormat(pattern="yyyy-MM-dd")
     private LocalDate createdAt;
     @Column(name = "updatedAt")
+    @JsonFormat(pattern="yyyy-MM-dd")
     private LocalDate updatedAt;
 
     protected Profile(){
     }
 
-    public Profile(String id, String image, String phone) {
+    public Profile(long id, String username, String image, String phone, LocalDate createdAt, LocalDate updatedAt) {
         this.id = id;
+        this.username = username;
         this.image = image;
         this.phone = phone;
-        this.createdAt = LocalDate.now();
-        this.updatedAt = LocalDate.now();
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
     }
 
-    public String getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(long id) {
         this.id = id;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getImage() {

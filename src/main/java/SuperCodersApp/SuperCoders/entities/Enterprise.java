@@ -18,7 +18,8 @@ public class Enterprise {
     @Column(name = "phone")
     private String phone;
 
-    @OneToMany(fetch = FetchType.LAZY)
+    //@OneToMany(fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "id") //mapeada por los id de emprealdos
     private List<Employee> employees;
 
     protected Enterprise() {
