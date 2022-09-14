@@ -2,7 +2,6 @@ package SuperCodersApp.SuperCoders.controllers;
 
 import SuperCodersApp.SuperCoders.entities.Transaction;
 import SuperCodersApp.SuperCoders.services.TransactionService;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -19,7 +18,7 @@ public class TransactionController {
     }
 
     //@GetMapping
-    public List<Transaction> getAllTransaction(){
+    public List<Transaction> getAllTransaction() {
         return this.transactionService.getAllTransactionS();
     }
 
