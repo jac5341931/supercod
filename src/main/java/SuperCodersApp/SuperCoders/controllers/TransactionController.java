@@ -2,6 +2,7 @@ package SuperCodersApp.SuperCoders.controllers;
 
 import SuperCodersApp.SuperCoders.entities.Transaction;
 import SuperCodersApp.SuperCoders.services.TransactionService;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,12 +18,12 @@ public class TransactionController {
         this.transactionService = transactionService;
     }
 
-    @GetMapping
-    public List<Transaction> getAllTransaction() {
+    //@GetMapping
+    public List<Transaction> getAllTransaction(){
         return this.transactionService.getAllTransactionS();
     }
 
-    @GetMapping("/{id}")
+    //@GetMapping("/{id}")
     public Transaction getTransaction(@PathVariable("id") long id) {
         return this.transactionService.getTransactionS(id);
     }
@@ -33,7 +34,7 @@ public class TransactionController {
         return this.transactionService.createTransactionS(transaction);
     }
 
-    @PatchMapping("/{id}")
+    //@PatchMapping("/{id}")
     public Boolean updateTransaction(@PathVariable("id") long id, @RequestBody Transaction transaction) {
         Transaction e1 = this.transactionService.getTransactionS(id);
         if (e1 != null) {
@@ -47,7 +48,7 @@ public class TransactionController {
         }
     }
 
-    @DeleteMapping("/{id}")
+    //@DeleteMapping("/{id}")
     public Boolean deleteTransaction(@PathVariable("id") long id) {
         return this.transactionService.deleteTransactionS(id);
     }
