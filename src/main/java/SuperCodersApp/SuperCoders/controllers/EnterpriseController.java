@@ -8,7 +8,7 @@ import java.util.List;
 
 @RestController
 //Generaliza la ruta a todos los metodos
-@RequestMapping("enterprise")
+//@RequestMapping("enterprise")
 public class EnterpriseController {
 
     EnterpriseService enterpriseServices;

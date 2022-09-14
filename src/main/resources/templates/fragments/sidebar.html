@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<div  th:fragment="sidebar" id="logo" class="d-flex text-center">
+    <div class="d-flex flex-column flex-grow-1 gap-3 my-5">
+
+        <a th:href="@{/transaction}" class="btn btn-primary" role="button">Transactions</a>
+
+        <a th:href="@{/employee}" class="btn btn-primary" role="button">Employees</a>
+
+        <a th:href="@{/enterprise}" class="btn btn-primary" role="button">Enterprises</a>
+    </div>
+
+</div>
+</body>
+</html>

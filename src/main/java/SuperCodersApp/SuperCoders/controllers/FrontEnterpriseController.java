@@ -1,6 +1,7 @@
 package SuperCodersApp.SuperCoders.controllers;
 
 import SuperCodersApp.SuperCoders.entities.Enterprise;
+import org.apache.logging.log4j.message.Message;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -20,6 +21,7 @@ public class FrontEnterpriseController {
 
     @GetMapping("/enterprise")
     public String indexEnterprise(Model model, @ModelAttribute("message") String message) {
+
         List<Enterprise> listEnterprise = enterpriseController.getAllEnterprise();
         model.addAttribute("listEnterprise", listEnterprise);
         model.addAttribute("message", message);
