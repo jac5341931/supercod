@@ -22,7 +22,7 @@ public class Enterprise {
     @OneToMany(mappedBy = "id") //mapeada por los id de emprealdos
     private List<Employee> employees;
 
-    protected Enterprise() {
+    public Enterprise() {
     }
     public Enterprise(String name, String address, String phone, String NIT) {
         this.name = name;
