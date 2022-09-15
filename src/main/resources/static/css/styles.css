@@ -1,3 +1,5 @@
+
+
 a{
     color:white;
 }
@@ -18,9 +20,38 @@ body {
     flex: 1;
 }
 
-footer {
+/*footer {
     background-color: #000;
     color: #FFF;
     grid-row-start: 2;
     grid-row-end: 3;
+}*/
+
+
+header{
+    background-image: url("/img/header01.jpg");
+    background-size: contain;
+    opacity: 0.85;
+    border-bottom: #AA1010 solid 3px;
+    border-style: dot-dot-dash;
+}
+
+header #logo_a{
+    background-color: #FFF;
+    border-radius: 50em;
+    opacity: 1;
+}
+
+aside{
+/*    background-image: url("/img/sidebar01.jpg");
+    background-size: contain;
+    opacity: 1;*/
+    border-right: #AA1010 solid 3px;
+    border-style: dot-dot-dash;
+
+}
+
+.btn-success{
+    background-color: #555 !important;
+    border-color: #000 !important;
 }
