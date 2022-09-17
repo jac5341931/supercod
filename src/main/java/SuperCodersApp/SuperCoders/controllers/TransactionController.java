@@ -8,7 +8,7 @@ import java.util.List;
 
 @RestController
 //Generaliza la ruta a todos los metodos
-@RequestMapping("transaction")
+//@RequestMapping("transaction")
 public class TransactionController {
 
     TransactionService transactionService;
@@ -22,13 +22,13 @@ public class TransactionController {
         return this.transactionService.getAllTransactionS();
     }
 
-    //@GetMapping("/{id}")
+    @GetMapping("/{id}")
     public Transaction getTransaction(@PathVariable("id") long id) {
         return this.transactionService.getTransactionS(id);
     }
 
 
-    @PostMapping
+    //@PostMapping
     public Boolean createTransaction(@RequestBody Transaction transaction) {
         return this.transactionService.createTransactionS(transaction);
     }

@@ -32,7 +32,7 @@ public class Employee {
         this.profile = profile;
     }
 
-    protected Employee() {
+    public Employee() {
     }
     public Employee(String name, String email, Profile profile,Enterprise enterprise) {
         this.name = name;

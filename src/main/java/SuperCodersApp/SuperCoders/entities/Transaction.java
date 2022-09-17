@@ -26,7 +26,7 @@ public class Transaction {
     @JsonFormat(pattern="yyyy-MM-dd")
     private LocalDate updatedAt;
 
-    protected Transaction() {
+    public Transaction() {
     }
     public Transaction(String concept, float amount, Employee anEmployee, Enterprise aEnterprise) {
         this.concept = concept;

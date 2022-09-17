@@ -63,11 +63,14 @@
 							  <td th:text="${trans.amount}">
 								  TB - Monthly
 							  </td>
-							  <td th:text="${trans.createdAt}">
+							  <td th:date="${trans.updatedAt}">
 								  01/04/2012
 							  </td>
-							  <td  th:text="${trans.employee.getName()}">
-								  Default
+							  <td>
+								  <div th:each="employee, stat : *{trans.employee}">
+									 <span th:field="*{employee[__${stat.index}__].}" th:id="${stat.index}"> default </span>
+								  </div>
+
 							  </td>
 						  </tr>
 						  </tr>

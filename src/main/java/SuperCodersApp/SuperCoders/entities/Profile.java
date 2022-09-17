@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Table(name = "profile")
@@ -22,6 +23,9 @@ public class Profile {
     @Column(name = "updatedAt")
     @JsonFormat(pattern="yyyy-MM-dd")
     private LocalDate updatedAt;
+
+    @OneToOne //mapeada por los id de emprealdos
+    private Employee employee;
 
     protected Profile(){
     }
