@@ -7,8 +7,8 @@
 
     <title>SuperCoders</title>
 
-    <meta name="description" content="Source code generated using layoutit.com">
-    <meta name="author" content="LayoutIt!">
+    <meta name="description" content="Supercoders">
+    <meta name="author" content="SuperCoders">
 
     <!-- CSS only -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
@@ -61,24 +61,21 @@
 								  1
 							  </td>
 							  <td th:text="${trans.amount}">
-								  TB - Monthly
+								  Amount
 							  </td>
 							  <td th:date="${trans.updatedAt}">
 								  01/04/2012
 							  </td>
-							  <td>
-								  <div th:each="employee, stat : *{trans.employee}">
-									 <span th:field="*{employee[__${stat.index}__].}" th:id="${stat.index}"> default </span>
-								  </div>
-
+							  <td th:text="${trans.employee!=null}?${trans.employee.name}:''">
+									Employee
 							  </td>
-						  </tr>
+						  </p>
 						  </tr>
 						  </tbody>
 					  </table>
 					  <div id="section-summary" class="d-flex flex-row-reverse">
 						  <h4 class="text-right text-muted">
-							  $ <span>200,000</span>
+							  $ <span th:text="${#aggregates.sum(transactionList.![amount])}">200,000</span>
 						  </h4>
 					  </div>
 

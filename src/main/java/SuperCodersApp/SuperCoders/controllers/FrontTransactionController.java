@@ -30,7 +30,7 @@ public class FrontTransactionController {
     public String getAllTransaction(Model model, @ModelAttribute("message") String message, @ModelAttribute("type") String type){
         List<Transaction> transactionList = this.transactionController.getAllTransaction();
         model.addAttribute("transactionList", transactionList);
-        model.addAttribute("employee", new Employee());
+       // model.addAttribute("employee", new Employee());
         model.addAttribute("type", type);
         model.addAttribute("message", message);
         return "transaction/index";
