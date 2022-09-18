@@ -1,5 +1,8 @@
 package SuperCodersApp.SuperCoders.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 
 @Entity
@@ -13,13 +16,15 @@ public class Employee {
     private String name;
     @Column(name = "email")
     private String email;
-     @Column(name = "role")
-     @Enumerated(EnumType.ORDINAL)
+    @Column(name = "role")
+    @Enumerated(EnumType.ORDINAL)
     private Role role;
     @ManyToOne
     @JoinColumn(name = "enterprise_id")
+    @JsonIgnoreProperties
     private Enterprise enterprise;
 
+    @JsonManagedReference
     @OneToOne
     @JoinColumn(name = "profile_id")
     private Profile profile;

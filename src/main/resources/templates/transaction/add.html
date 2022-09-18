@@ -67,7 +67,7 @@
                             <div class="form-group col-md-12">
                                 <label class="col-md-3" for="createdAt">Employee:</label>
                                 <div class="col-md-6">
-                                <select class="form-control" name="emplid" id="emplid">
+                                <select class="form-control" name="employee" id="employee">
                                     <option  th:each="empl : ${employees}"
                                              th:value="${empl.id}" th:text="${empl.id} + ' | ' + ${empl.name}"/>
                                 </select>
@@ -77,7 +77,7 @@
                             <div class="form-group col-md-12">
                                 <label class="col-md-3" for="createdAt">Enterprise:</label>
                                 <div class="col-md-6">
-                                    <select class="form-control" name="enterpriseid" id="enterpriseid">
+                                    <select class="form-control" name="enterprise" id="enterprise">
                                             <option th:each="enterprise : ${enterprises}"
                                                     th:value="${enterprise.id}"
                                                     th:text="${enterprise.id} + ' | ' + ${enterprise.name}"/>

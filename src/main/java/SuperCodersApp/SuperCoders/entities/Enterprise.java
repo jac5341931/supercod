@@ -1,5 +1,7 @@
 package SuperCodersApp.SuperCoders.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -19,6 +21,7 @@ public class Enterprise {
     private String phone;
 
     //@OneToMany(fetch = FetchType.LAZY)
+    @JsonBackReference
     @OneToMany(mappedBy = "id") //mapeada por los id de emprealdos
     private List<Employee> employees;
 
