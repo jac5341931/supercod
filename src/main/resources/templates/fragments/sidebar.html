@@ -2,13 +2,15 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <body>
 <div  th:fragment="sidebar" id="sidebar" class="d-flex text-center">
-    <div id="sidebar_buttons" class="d-flex flex-column flex-grow-1 gap-3 my-5">
 
-        <a th:href="@{/transaction}" class="btn btn-danger" role="button">Transactions</a>
+    <div class="border-end bg-white" id="sidebar-wrapper">
+        <div class="sidebar-heading border-bottom bg-light">Menu</div>
+        <div class="list-group list-group-flush">
+            <a class="list-group-item list-group-item-action list-group-item-light p-2" th:href="@{/transaction}" >Transaction</a>
+            <a class="list-group-item list-group-item-action list-group-item-light p-2" th:href="@{/employee}">Employees</a>
+            <a class="list-group-item list-group-item-action list-group-item-light p-2" th:href="@{/enterprise}">Enterprises</a>
 
-        <a th:href="@{/employee}" class="btn btn-danger" role="button">Employees</a>
-
-        <a th:href="@{/enterprise}" class="btn btn-danger" role="button">Enterprises</a>
+        </div>
     </div>
 
 </div>

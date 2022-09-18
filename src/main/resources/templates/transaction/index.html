@@ -1,99 +1,94 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" >
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<head th:replace="~{/fragments/head :: head}"></head>
+<body>
 
-    <title>SuperCoders</title>
+<div class="container-fluid h-100 d-flex flex-column justify-content-center">
+	<header th:replace="~{/fragments/header2 :: header2}"></header>
+	<div class="h-100 d-flex flex-row justify-content-start align-items-start">
+		<aside class="col-md-3 mx-auto">
+			<div th:insert="~{/fragments/sidebar :: sidebar}"></div>
+		</aside>
+		<main class="content col-md-9 mx-auto">
+			<!--CONTENIDO MODIFICABLE-->
+			<div id="section-title" class="row">
+				<div class="align-items col-md-12 mt-5">
+					<h3 class="text-center text-muted">
+						Enterprises
+					</h3>
+				</div>
+			</div>
 
-    <meta name="description" content="Supercoders">
-    <meta name="author" content="SuperCoders">
+			<div class="col-md-12">
+				<table class="table table-striped table-hover table-sm">
+					<tr>
+						<th>ID</th>
+						<th>Concept</th>
+						<th>Amount</th>
+						<th>Date</th>
+						<th>Employee</th>
+						<th>Edit</th>
+						<th>Delete</th>
 
-    <!-- CSS only -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
-    <link href="/css/styles.css" rel="stylesheet">
+					</tr>
 
-  </head>
-  <body>
-  <div class="container-md flex-box">
-	  <header class="row bg-secondary">
-		  <div th:insert="~{/fragments/header :: header}"></div>
-	  </header>
-	  <div class="row" gap-3>
-		  <aside class="col-md-3 bg-secondary">
-			  <div th:insert="~{/fragments/sidebar :: sidebar}"></div>
-		  </aside>
+					<!--Llenamos la tabla dibujada-->
+					<!--En nuestro controller, creamos en viewEmpresa un modelo con un atributo llamado emplist donde esta guardada la lista de todas las empresas-->
+					<tr th:each="trans : ${transactionList}" th:class="${trans.id}% 2 == 0? 'table-active' : ''">
+						<td th:text="${trans.id}"></td>
+						<td th:text="${trans.concept}"></td>
+						<td th:text="${trans.amount}"></td>
+						<td th:date="${trans.updatedAt}"></td>
+						<td th:text="${trans.employee!=null}?${trans.employee.name}:''"></td>
+						<td ></td>
+						<td ></td>
+					</tr>
+				</table>
+				<div id="section-summary" class="d-flex flex-row-reverse">
+					<h4 class="text-right text-muted">
+						$ <span th:text="${#aggregates.sum(transactionList.![amount])}">200,000</span>
+					</h4>
+				</div>
 
-
-		  <main class="content col-md-9 mx-auto">
-			  <div id="section-title" class="row">
-				  <div class="align-items col-md-12 mt-5">
-					  <h3 class="text-center text-muted">
-						  Ingresos y Egresos
-					  </h3>
-				  </div>
-			  </div>
-
-
-			  <div id="section-data" class="row">
-				  <div class="col-md-12">
-					  <table class="table table-striped table-hover table-sm">
-						  <thead>
-						  <tr>
-							  <th>
-								  Concepto
-							  </th>
-							  <th>
-								  Monto
-							  </th>
-							  <th>
-								  Fecha
-							  </th>
-							  <th>
-								  Usuario
-							  </th>
-						  </tr>
-						  </thead>
-						  <tbody>
-						  <tr th:each="trans : ${transactionList}" th:class="${trans.id}% 2 == 0? 'table-active' : ''">
-							  <td th:text="${trans.concept}">
-								  1
-							  </td>
-							  <td th:text="${trans.amount}">
-								  Amount
-							  </td>
-							  <td th:date="${trans.updatedAt}">
-								  01/04/2012
-							  </td>
-							  <td th:text="${trans.employee!=null}?${trans.employee.name}:''">
-									Employee
-							  </td>
-						  </p>
-						  </tr>
-						  </tbody>
-					  </table>
-					  <div id="section-summary" class="d-flex flex-row-reverse">
-						  <h4 class="text-right text-muted">
-							  $ <span th:text="${#aggregates.sum(transactionList.![amount])}">200,000</span>
-						  </h4>
-					  </div>
-
-					  <button type="button" class="btn btn-success"><a th:href="@{/transaction/new}">Add transaction</a></button>
-				  </div>
-			  </div>
-		  </main>
-
-		  <footer class="row d-flex">
-					<div th:insert="~{/fragments/footer :: copy}"></div>
-		  </footer>
-
-
+				<button type="button" class="btn btn-success"><a th:href="@{/transaction/new}">Add transaction</a></button>
+			</div>
+			<!--FIN DEL CONTENIDO MODIFICABLE-->
+		</main>
 	</div>
 
+	<footer class="row d-flex">
+		<div th:insert="~{/fragments/footer :: copy}"></div>
+	</footer>
+</div>
 
-    <!-- JavaScript Bundle with Popper -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 
-  </body>
+<script th:inline="javascript">
+	window.onload=function(){
+
+		var msg = [[${message}]];
+		if (msg == "saveOK"){
+			Command : toastr["success"]("Empresa creada con éxito!")
+		}
+		else if (msg == "updateOK"){
+			Command : toastr["success"]("Empresa actualizada con éxito!")
+		}
+		else if (msg == "deleteOK"){
+			Command : toastr["error"]("Empresa eliminada con éxito!")
+		}
+		else if (msg == "deleteError"){
+			Command : toastr["error"]("Empresa no ha sido eliminada!")
+		}
+		toastr.options={
+			"positionClass": "toast-top-right",
+			"showDuration":"300",
+			"showMethod":"fadeIn",
+			"hideMethod":"fadeOut",
+		}
+
+
+	}
+
+</script>
+
+</body>
 </html>

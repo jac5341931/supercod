@@ -1,164 +1,196 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/html">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>SuperCoders</title>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<!-- To declare your language - read more here: https://www.w3.org/International/questions/qa-html-language-declarations -->
+<head th:insert="~{/fragments/head :: head}"></head>
 
-    <meta name="description" content="Source code generated using layoutit.com">
-    <meta name="author" content="LayoutIt!">
+<body id="top">
 
-    <!-- CSS only -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
-    <link href="/css/styles.css" rel="stylesheet">
+<!-- ################################################################################################ -->
+<!-- Top Background Image Wrapper -->
+<div class="bgded overlay padtop" style="background-image:url('/img/demo/backgrounds/WallpaperDog-605635.jpg');">
+    <!-- ################################################################################################ -->
+    <header id="header" class="hoc clear">
+        <div id="logo" class="fl_left">
+            <!-- ################################titulopagina####################################### -->
+            <h1 class="titulo"> Supercoders Comics</h1>
+            <!--################################################################################################ -->
+        </div>
+        <!-- #############################Menusuperior############################################################ -->
 
-  </head>
-  <body>
+        <!-- ################################################################################################ -->
+    </header>
+    <div class="logoMontegez">
+        <a th:href="@{/}"><img class="logoPrimario" src="/img/logoo.png" alt="#" /></a>
+    </div>
+    <!-- ################################################################################################ -->
+    <div id="pageintro" class="hoc clear">
+        <!-- ################################################################################################ -->
+        <article>
+            <h3 class="heading">Nosotros</h3>
+            <p class="quienesSomos">Distribuimos y comercializamos todo tipo de artículos geek como, comics, mangas, figuras de acción, ropa, entre otros. Detrás de la marca hay un gran sin número de personas que se esfuerzan al máximo día a día en entregarles los mejores productos.</p>
+        </article>
+        <!-- ################################################################################################ -->
+    </div>
+    <!-- ################################################################################################ -->
+</div>
+<!-- ##########################################iniciocards############################################## -->
+<div class="cards00">
+    <div class="cards01">
+        <img src="/img/ai.jpg" class="imagesCard1" alt="...">
+        <div class="card-body">
+            <p class="card-text"><b>VENTA DE VIDEOJUEGOS </b><br><hr>
+            Venta de videojuegos para todo tipo de consolas de video, alquiler de peliculas, play 1, 2 ,3, psp's y xbox´s</p>
+        </div>
+    </div>
+    <div class="cards02">
+        <img src="/img/reparar.png" class="imagesCard2" alt="...">
+        <div class="card-body">
+            <p class="card-text"><b>ARTÍCULOS ORIGINALES</b><br><hr>
+            Artículos importados de su país de origen, 100 % garantizados, somos coleccionistas y contamos con un personal calificado experto en piezas vintage</p>
+        </div>
+    </div>
+    <div class="cards03">
+        <img src="/img/huella-dactilar.png" class="imagesCard3" alt="...">
+        <div class="card-body">
+            <p class="card-text"><b>COMICS, MANGAS E HISTORIETAS</b><br><hr>
+            Venta de comics, mangas e historietas de diferentes paises, apoyamos la industría colombiano y aportamos al desarrollo y reproducción de piezas originales.</p>
+        </div>
+    </div>
+</div>
+<!-- ##########################################fincard################################################### -->
 
-    <div class="container-md flex-box">
-	<header class="row bg-secondary">
-		<div th:insert="~{/fragments/header :: header}"></div>
-	</header>
-	<div class="row" gap-3>
-		<aside class="col-md-3 bg-secondary">
-			<div th:insert="~{/fragments/sidebar :: sidebar}"></div>
-		</aside>
+<!-- ##########################################infoempresa##########################################-->
+<div id="jewellery" class="Best">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="titlepage">
+                    <h2>Nuestra compañía</h2>
+                    <p>
+                        La tienda Supercoders comics comenzó su labor como tienda online mediante Fanpage en Facebook, rápidamente haciéndose un lugar en el “mundillo” del anime manga mediante
+                        la asistencia a eventos y convenciones, como g-TON All Night, Festival Jzone y Festival Asian Sun Fest, eventos con invitados especiales como cosplayers, dobladores y
+                        cantantes de openings anime.
+                        <br>
+                        En el año 2012 Supercoders hace presencia por primera vez en la cuarta edición del Salón del Ocio y la Fantasía en Corferias como tienda expositora, ganando así, mucho más
+                        renombre y atrayendo nuevos clientes y para el 22 de Junio del año 2014 Supercoders abre su primer negocio local en el sector de Hipotecho Occidental, punto clave en cercanías
+                        del Centro Comercial Plaza de las Américas, Cine Colombia, Mundo Aventura y el Estadio de Techo.
+                        <br>
 
-		<th:block th:if="${message != null}">
-			<!-- /* The message code is returned from the @Controller */ -->
-			<div th:replace="fragments/alert :: alert (type=${#strings.toLowerCase(message.type)}, message=#{${message.message}(${#authentication.name})})">&nbsp;</div>
-		</th:block>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="best_main">
+                    <div class="row d_flex">
+                        <div class="col-xl-7 col-lg-7 col-md-7 col-sm-12">
+                            <div class="best_text">
+                                <h1>Figuras de acción</h1>
+                                <p>Funko pops
+                                    <br>
+                                    Iron man
+                                    <br>
+                                    Spiderman
+                                    <br>
+                                    Wolverine
+                                    <br>
+                                    Hulk
+                                    <br>
+                                    Doctor Strange
+                                    <br>
+                                    Kirito
+                                    <br>
+                                    lufy
+                                    <br>
+                                    Zoro
+                                    <br>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-xl-5 col-lg-5 col-md-5 col-sm-12">
+                            <div class="best_img">
+                                <a class="beimg3"href="#"><img src="/img/beimg.png" alt="#" /></a>
+                                <!--<figure> <img src="/img/beimg.png"></figure>-->-
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="best_main">
+                    <div class="row d_flex">
+                        <div class="col-xl-5 col-lg-5 col-md-5 col-sm-12">
+                            <div class="best_img croos_rt">
+                                <a class="beimg3"href="#"><img src="/img/beimg2.png" alt="#" /></a>
+                                <!---<figure><img src="/img/beimg2.png"></figure>-->
+                            </div>
+                        </div>
+                        <div class="col-xl-7 col-lg-7 col-md-7 col-sm-12">
+                            <div class="best_text flot_left">
+                                <h1>Mangas, historietas y comics</h1>
+                                <p>¡Disponibles todos los tomos!
+                                    Tokyo Ghoul
+                                    <br>
+                                    Jojo´s Bizarre adventures
+                                    <br>
+                                    Demon layer: Kimetsu no yaiba
+                                    <br>
+                                    One piece
+                                    <br>
+                                    assassination classroom
+                                    <br>
 
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="best_main pa_bot">
+                    <div class="row d_flex">
+                        <div class="col-xl-7 col-lg-7 col-md-7 col-sm-12">
+                            <div class="best_text">
+                                <h1>Prendas de vestir</h1>
+                                <p>Camisetas
+                                    <br>
+                                    Kimonos
+                                    <br>
+                                    Vestidos
+                                    <br>
+                                    Faldas
+                                    <br>
+                                    Buzos y hoodies
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-xl-5 col-lg-5 col-md-5 col-sm-12">
+                            <div class="best_img d_none">
+                                <a class="beimg3"href="#"><img src="/img/beimg3.png" alt="#" /></a>
 
-		<div class="col-md-9 mx-auto">
-			<div id="section-title" class="row">
-				<div class="align-items col-md-12 mt-5">
-					<h3 class="text-center text-muted">
-						PAGINA DE INICIO - EJEMPLO
-					</h3>
-				</div>
-			</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-			<div id="section-button" class="d-flex flex-row-reverse">
-					<button type="button" class="btn btn-success btn-sm">
-						Nueva Transaccion
-					</button>
-			</div>
+<div th:insert="~{/fragments/footer :: copy}"></div>
+<!--
+<a id="backtotop" href="#top"><i class="fas fa-chevron-up"></i></a>-->
 
-			<div id="section-data" class="row">
-				<div class="col-md-12">
-					<table class="table table-striped table-hover table-sm">
-						<thead>
-							<tr>
-								<th>
-									Concepto
-								</th>
-								<th>
-									Monto
-								</th>
-								<th>
-									Fecha
-								</th>
-								<th>
-									Usuario
-								</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>
-									1
-								</td>
-								<td>
-									TB - Monthly
-								</td>
-								<td>
-									01/04/2012
-								</td>
-								<td>
-									Default
-								</td>
-							</tr>
-							<tr class="table-active">
-								<td>
-									1
-								</td>
-								<td>
-									TB - Monthly
-								</td>
-								<td>
-									01/04/2012
-								</td>
-								<td>
-									Approved
-								</td>
-							</tr>
-							<tr class="table-success">
-								<td>
-									2
-								</td>
-								<td>
-									TB - Monthly
-								</td>
-								<td>
-									02/04/2012
-								</td>
-								<td>
-									Declined
-								</td>
-							</tr>
-							<tr class="table-warning">
-								<td>
-									3
-								</td>
-								<td>
-									TB - Monthly
-								</td>
-								<td>
-									03/04/2012
-								</td>
-								<td>
-									Pending
-								</td>
-							</tr>
-							<tr class="table-danger">
-								<td>
-									4
-								</td>
-								<td>
-									TB - Monthly
-								</td>
-								<td>
-									04/04/2012
-								</td>
-								<td>
-									Call in to confirm
-								</td>
-							</tr>
-						</tbody>
-					</table>
-					<div id="section-summary" class="d-flex flex-row-reverse">
-							<h4 class="text-right text-muted">
-								$ <span>200,000</span>
-							</h4>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
-		<footer class="row d-flex">
-			<div th:insert="~{/fragments/footer :: copy}"></div>
-		</footer>
-
-
-	</div>
-
-
-    <!-- JavaScript Bundle with Popper -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-
-  </body>
+<!-- JAVASCRIPTS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script src="/layout/scripts/jquery.backtotop.js"></script>
+<script src="/layout/scripts/jquery.mobilemenu.js"></script>
+<!-- Javascript files-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.6/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script src="js/plugin.js"></script>
+<!-- sidebar -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="/js/custom.js"></script>
+<script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+</body>
 </html>

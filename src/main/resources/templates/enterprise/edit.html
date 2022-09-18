@@ -1,29 +1,17 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" >
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- CSS only -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
-    <link href="/css/styles.css" rel="stylesheet">
+<head th:replace="~{/fragments/head :: head}"></head>
 
-    <title>Enterprise List - Ciclo3</title>
-
-</head>
 <body>
 
-<div class="container-md flex-box">
-    <header class="row bg-secondary">
-        <div th:insert="~{/fragments/header :: header}"></div>
-    </header>
-
-    <div class="row" gap-3>
-        <aside class="col-md-3 bg-secondary">
+<div class="container-fluid h-100 d-flex flex-column justify-content-center">
+    <header th:replace="~{/fragments/header2 :: header2}"></header>
+    <div class="h-100 d-flex flex-row justify-content-start align-items-start">
+        <aside class="col-md-3 mx-auto">
             <div th:insert="~{/fragments/sidebar :: sidebar}"></div>
         </aside>
-
         <main class="content col-md-9 mx-auto">
-
+            <!--CONTENIDO MODIFICABLE-->
             <div id="section-title" class="row">
                 <div class="align-items col-md-12 mt-5">
                     <h3 class="text-center text-muted">
@@ -95,13 +83,15 @@
 
                 </div>
             </div>
-
+            <!--FIN DEL CONTENIDO MODIFICABLE-->
         </main>
-        <footer class="row d-flex">
-            <div th:insert="~{/fragments/footer :: copy}"></div>
-        </footer>
     </div>
+
+    <footer class="row d-flex">
+        <div th:insert="~{/fragments/footer :: copy}"></div>
+    </footer>
 </div>
+
 
 <script th:inline="javascript">
     window.onload=function(){

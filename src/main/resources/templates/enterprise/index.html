@@ -1,80 +1,67 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" >
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- CSS only -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
-    <link href="/css/styles.css" rel="stylesheet">
+<head th:replace="~{/fragments/head :: head}"></head>
 
-    <title>Enterprise List - Ciclo3</title>
-
-</head>
 <body>
 
-<div class="container-md flex-box">
-    <header class="row bg-secondary">
-        <div th:insert="~{/fragments/header :: header}"></div>
-    </header>
-
-    <div class="row" gap-3>
-        <aside class="col-md-3 bg-secondary">
+<div class="container-fluid h-100 d-flex flex-column justify-content-center">
+    <header th:replace="~{/fragments/header2 :: header2}"></header>
+    <div class="h-100 d-flex flex-row justify-content-start align-items-start">
+        <aside class="col-md-3 mx-auto">
             <div th:insert="~{/fragments/sidebar :: sidebar}"></div>
         </aside>
-
         <main class="content col-md-9 mx-auto">
-
-                <div id="section-title" class="row">
-                    <div class="align-items col-md-12 mt-5">
-                        <h3 class="text-center text-muted">
-                            Enterprises
-                        </h3>
-                    </div>
+            <!--CONTENIDO MODIFICABLE-->
+            <div id="section-title" class="row">
+                <div class="align-items col-md-12 mt-5">
+                    <h3 class="text-center text-muted">
+                        Enterprises
+                    </h3>
                 </div>
+            </div>
 
-                <div id="section-data" class="row">
-                    <div class="col-md-12">
-                        <table class="table table-striped table-hover table-sm">
-                                <tr>
-                                    <th>ID</th>
-                                    <th>Name</th>
-                                    <th>Address</th>
-                                    <th>Phone</th>
-                                    <th>Document</th>
-                                    <th>Edit</th>
-                                    <th>Delete</th>
+            <div class="col-md-12">
+                <table class="table table-striped table-hover table-sm">
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Address</th>
+                        <th>Phone</th>
+                        <th>Document</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
 
-                                </tr>
+                    </tr>
 
-                                <!--Llenamos la tabla dibujada-->
-                                <!--En nuestro controller, creamos en viewEmpresa un modelo con un atributo llamado emplist donde esta guardada la lista de todas las empresas-->
-                                <tr th:each="enterprise : ${listEnterprise}">
-                                    <td th:text="${enterprise.id}"></td>
-                                    <td th:text="${enterprise.name}"></td>
-                                    <td th:text="${enterprise.address}"></td>
-                                    <td th:text="${enterprise.phone}"></td>
-                                    <td th:text="${enterprise.NIT}"></td>
+                    <!--Llenamos la tabla dibujada-->
+                    <!--En nuestro controller, creamos en viewEmpresa un modelo con un atributo llamado emplist donde esta guardada la lista de todas las empresas-->
+                    <tr th:each="enterprise : ${listEnterprise}">
+                        <td th:text="${enterprise.id}"></td>
+                        <td th:text="${enterprise.name}"></td>
+                        <td th:text="${enterprise.address}"></td>
+                        <td th:text="${enterprise.phone}"></td>
+                        <td th:text="${enterprise.NIT}"></td>
 
-                                    <td><button type="button" class="btn btn-warning px-4 me-sm-3"><a th:href="@{/enterprise/{id}/edit(id=${enterprise.id})}">Edit</a></button></td>
-                                    <td>
-                                        <form th:action="@{/enterprise/{id}/delete(id=${enterprise.id})}" th:method="post">
-                                            <button id="btnDelete" type="submit" class="btn btn-danger px-4 me-sm-3">Delete</button>
-                                        </form>
-                                    </td>
-                                </tr>
-                            </table>
+                        <td><button type="button" class="btn btn-warning px-4 me-sm-3"><a th:href="@{/enterprise/{id}/edit(id=${enterprise.id})}">Edit</a></button></td>
+                        <td>
+                            <form th:action="@{/enterprise/{id}/delete(id=${enterprise.id})}" th:method="post">
+                                <button id="btnDelete" type="submit" class="btn btn-danger px-4 me-sm-3">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                </table>
 
-                        <!-- Boton para agregar nuevas empresas -->
-                        <button type="button" class="btn btn-success"><a th:href="@{/enterprise/new}">Add enterprise</a></button>
-                    </div>
-                </div>
-
+                <button type="button" class="btn btn-success"><a th:href="@{/enterprise/new}">Add enterprise</a></button>
+            </div>
+            <!--FIN DEL CONTENIDO MODIFICABLE-->
         </main>
-        <footer class="row d-flex">
-            <div th:insert="~{/fragments/footer :: copy}"></div>
-        </footer>
     </div>
+
+    <footer class="row d-flex">
+        <div th:insert="~{/fragments/footer :: copy}"></div>
+    </footer>
 </div>
+
 
 <script th:inline="javascript">
     window.onload=function(){

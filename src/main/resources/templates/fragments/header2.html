@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <body>
-    <header th:fragment="header" id="header"> <!--class="hoc clear" alert alert-success-->
+    <header id="header" th:fragment="header2" class="container-fluid h-100" style="background-image:url('/img/demo/backgrounds/WallpaperDog-605635.jpg');">
         <div id="logo" class="fl_left">
             <!-- ################################titulopagina####################################### -->
             <h1 class="titulo"> Supercoders Comics</h1>
             <!--################################################################################################ -->
+            <div>
+                <a th:href="@{/}"><img class="logoSegundario" width="180px;" src="/img/logoo.png" alt="#" /></a>
+            </div>
         </div>
-        <!-- #############################Menusuperior############################################################ -->
+
     </header>
 
 </body>
