@@ -22,7 +22,7 @@ public class TransactionController {
         return this.transactionService.getAllTransactionS();
     }
 
-    @GetMapping("/{id}")
+    //@GetMapping("/{id}")
     public Transaction getTransaction(@PathVariable("id") long id) {
         return this.transactionService.getTransactionS(id);
     }

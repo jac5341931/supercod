@@ -6,10 +6,7 @@ import SuperCodersApp.SuperCoders.entities.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
@@ -57,6 +54,31 @@ public class FrontTransactionController {
         redirectAttributes.addFlashAttribute("message", "saveError");
         return "redirect:/transaction/add";
     }
+
+
+    @GetMapping("/transaction/{id}/edit")
+    public String editTransaction(Model model, @PathVariable long id, @ModelAttribute("message") String message) {
+        Transaction transaction = transactionController.getTransaction(id);
+        List<Employee> employees = employeeController.getAllEmployee();
+        List<Enterprise> enterprises = enterpriseController.getAllEnterprise();
+        //Creamos un atributo para el modelo, que se llame igualmente emp y es el que ira al html para llenar o alimentar campos
+        model.addAttribute("transaction", transaction);
+        model.addAttribute("employees", employees);
+        model.addAttribute("enterprises", enterprises);
+        model.addAttribute("message", message);
+        return "transaction/edit";
+    }
+
+    @PostMapping("/transaction/{id}")
+    public String updateTransaction(@PathVariable long id, @ModelAttribute("transaction") Transaction transaction, RedirectAttributes redirectAttributes) {
+        if (transactionController.updateTransaction(id, transaction)) {
+            redirectAttributes.addFlashAttribute("message", "updateOK");
+            return "redirect:/transaction";
+        }
+        redirectAttributes.addFlashAttribute("message", "updateError");
+        return "redirect:/transaction/edit";
+    }
+
 
 
 }

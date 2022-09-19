@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<head th:replace="~{/fragments/head :: head}"></head>
+
+<body>
+
+<div class="container-fluid h-100 d-flex flex-column justify-content-center">
+    <header th:replace="~{/fragments/header2 :: header2}"></header>
+    <div class="h-100 d-flex flex-row justify-content-start align-items-start">
+        <aside class="col-md-3 mx-auto">
+            <div th:insert="~{/fragments/sidebar :: sidebar}"></div>
+        </aside>
+        <main class="content col-md-9 mx-auto">
+            <!--CONTENIDO MODIFICABLE-->
+            <div id="section-title" class="row">
+                <div class="align-items col-md-12 mt-5">
+                    <h3 class="text-center text-muted">
+                        Edit Transaction data
+                    </h3>
+                </div>
+            </div>
+
+            <div id="section-data" class="row">
+                <div class="col-md-12">
+
+                    <form th:action="@{/transaction/{id}(id=${transaction.id})}" th:object="${transaction}" th:method="patch">
+                        <!--Campo para id-->
+                        <div class="row">
+                            <div class="form-group col-md-12">
+                                <label class="col-md-3" for="id">ID:</label>
+                                <div class="col-md-6">
+                                    <input type="text" th:field="*{id}" class="form-control" id="id" required="required" readonly></div>
+                            </div>
+                        </div>
+                        <!--Campo para Concept-->
+                        <div class="row">
+                            <div class="form-group col-md-12">
+                                <label class="col-md-3" for="concept">Concept:</label>
+                                <div class="col-md-6">
+                                    <input type="text" th:field="*{concept}" class=" form-control" id="concept" required="required"></div>
+                            </div>
+                        </div>
+
+                        <!--Campo para Amount-->
+                        <div class="row">
+                            <div class="form-group col-md-12">
+                                <label class="col-md-3" for="amount">Amount:</label>
+                                <div class="col-md-6">
+                                    <input type="text" th:field="*{amount}" class="form-control" id="amount" required="required"></div>
+                            </div>
+                        </div>
+
+                        <!--Campo para CreatedAt-->
+                        <div class="row">
+                            <div class="form-group col-md-12">
+                                <label class="col-md-3" for="createdAt">Updated at:</label>
+                                <div class="col-md-6">
+                                    <input type="date" th:date="*{updatedAt}" class="form-control" id="createdAt" required="required"></div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="form-group col-md-12">
+                                <label class="col-md-3" for="createdAt">Employee:</label>
+                                <div class="col-md-6">
+                                    <select class="form-control" name="employee" id="employee">
+                                        <th:block th:each="empl : ${employees}">
+                                            <option th:selected="${transaction.employee.id} eq ${empl.id}"
+                                                    th:value="${empl.id}"
+                                                    th:text="${empl.id} + ' | ' + ${empl.name}">
+                                            </option>
+                                        </th:block>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group col-md-12">
+                                <label class="col-md-3" for="createdAt">Enterprise:</label>
+                                <div class="col-md-6">
+                                    <select class="form-control" name="enterprise" id="enterprise">
+                                        <th:block th:each="enterprise : ${enterprises}">
+                                            <option th:selected="${transaction.enterprise.id} eq ${enterprise.id}"
+                                                    th:value="${enterprise.id}"
+                                                    th:text="${enterprise.id} + ' | ' + ${enterprise.name}"/>
+                                        </th:block>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="row mt-3">
+                            <div class="col-md-2">
+                                <!--<button id="btnDone" type="submit" class="btn btn-primary btn-lg px-4 me-sm-3">Update</button>-->
+                                <button class="btn btn-success">Update</button>
+                            </div>
+                            <div class="col-md-2">
+                                <a th:href="@{/transaction}" class="btn btn-info" role="button">Back</a>
+                            </div>
+                        </div>
+
+                    </form>
+
+                </div>
+            </div>
+            <!--FIN DEL CONTENIDO MODIFICABLE-->
+        </main>
+    </div>
+
+    <footer class="row d-flex">
+        <div th:insert="~{/fragments/footer :: copy}"></div>
+    </footer>
+</div>
+
+
+<script th:inline="javascript">
+    window.onload=function(){
+
+        var msg = [[${message}]];
+        if (msg == "saveOK"){
+            Command : toastr["success"]("Empresa creada con éxito!")
+        }
+        else if (msg == "updateOK"){
+            Command : toastr["success"]("Empresa actualizada con éxito!")
+        }
+        else if (msg == "deleteOK"){
+            Command : toastr["error"]("Empresa eliminada con éxito!")
+        }
+        else if (msg == "deleteError"){
+            Command : toastr["error"]("Empresa no ha sido eliminada!")
+        }
+        toastr.options={
+            "positionClass": "toast-top-right",
+            "showDuration":"300",
+            "showMethod":"fadeIn",
+            "hideMethod":"fadeOut",
+        }
+
+
+    }
+
+</script>
+
+</body>
+</html>
