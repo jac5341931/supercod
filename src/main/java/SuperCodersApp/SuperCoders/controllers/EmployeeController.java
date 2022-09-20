@@ -15,23 +15,22 @@ public class EmployeeController {
         this.employeeService = employeeService;
     }
 
-    @GetMapping
+    //@GetMapping
     public List<Employee> getAllEmployee(){
         return this.employeeService.getAllEmployeeS();
     }
 
-    @GetMapping("/{id}")
+    //@GetMapping("/{id}")
     public Employee getEmployee(@PathVariable("id") long id){
         return this.employeeService.getEmployeeS(id);
     }
 
-    @PostMapping
+    //@PostMapping
     public Boolean createEmployee(@RequestBody Employee employee){
         return this.employeeService.createEmployeeS(employee);
     }
 
-    @PatchMapping("/{id}")
-
+    //@PatchMapping("/{id}")
     public Boolean updateEmployee(@PathVariable("id") long id, @RequestBody Employee employee){
         Employee e1 = this.employeeService.getEmployeeS(id);
         if(e1 != null){
@@ -44,7 +43,7 @@ public class EmployeeController {
             return false;
         }
     }
-    @DeleteMapping("/{id}")
+    //@DeleteMapping("/{id}")
     public Boolean deleteEmployee (@PathVariable("id") long id){
         return this.employeeService.deleteEmployeeS(id);
     }

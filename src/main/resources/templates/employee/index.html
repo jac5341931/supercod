@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<head th:replace="~{/fragments/head :: head}"></head>
+
+<body>
+
+<div class="container-fluid h-100 d-flex flex-column justify-content-center">
+    <header th:replace="~{/fragments/header2 :: header2}"></header>
+    <div class="h-100 d-flex flex-row justify-content-start align-items-start">
+        <aside class="col-md-3 mx-auto">
+            <div th:insert="~{/fragments/sidebar :: sidebar}"></div>
+        </aside>
+        <main class="content col-md-9 mx-auto">
+            <!--CONTENIDO MODIFICABLE-->
+            <div id="section-title" class="row">
+                <div class="align-items col-md-12 mt-5">
+                    <h3 class="text-center text-muted">
+                        Enterprises
+                    </h3>
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <table class="table table-striped table-hover table-sm">
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Profile</th>
+                        <th>Role</th>
+                        <th>Enterprise</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+
+                    </tr>
+
+                    <!--Llenamos la tabla dibujada-->
+                    <!--En nuestro controller, creamos en viewEmpresa un modelo con un atributo llamado emplist donde esta guardada la lista de todas las empresas-->
+                    <tr th:each="employee : ${listEmployee}">
+                        <td th:text="${employee.id}"></td>
+                        <td th:text="${employee.name}"></td>
+                        <td th:text="${employee.email}"></td>
+                        <td th:text="${employee.profile.username}"></td>
+                        <td th:text="${employee.role}"></td>
+                        <td th:text="${employee.enterprise.name}"></td>
+
+                        <td><button type="button" class="btn btn-warning px-4 me-sm-3"><a th:href="@{/employee/{id}/edit(id=${employee.id})}">Edit</a></button></td>
+                        <td>
+                            <form th:action="@{/employee/{id}/delete(id=${employee.id})}" th:method="post">
+                                <button id="btnDelete" type="submit" class="btn btn-danger px-4 me-sm-3">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                </table>
+
+                <button type="button" class="btn btn-success"><a th:href="@{/employee/new}">Add employee</a></button>
+            </div>
+            <!--FIN DEL CONTENIDO MODIFICABLE-->
+        </main>
+    </div>
+
+    <footer class="row d-flex">
+        <div th:insert="~{/fragments/footer :: copy}"></div>
+    </footer>
+</div>
+
+
+<script th:inline="javascript">
+    window.onload=function(){
+
+        var msg = [[${message}]];
+        if (msg == "saveOK"){
+            Command : toastr["success"]("Empresa creada con éxito!")
+        }
+        else if (msg == "updateOK"){
+            Command : toastr["success"]("Empresa actualizada con éxito!")
+        }
+        else if (msg == "deleteOK"){
+            Command : toastr["error"]("Empresa eliminada con éxito!")
+        }
+        else if (msg == "deleteError"){
+            Command : toastr["error"]("Empresa no ha sido eliminada!")
+        }
+        toastr.options={
+            "positionClass": "toast-top-right",
+            "showDuration":"300",
+            "showMethod":"fadeIn",
+            "hideMethod":"fadeOut",
+        }
+
+
+    }
+
+</script>
+
+</body>
+</html>

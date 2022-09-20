@@ -14,7 +14,7 @@
 			<div id="section-title" class="row">
 				<div class="align-items col-md-12 mt-5">
 					<h3 class="text-center text-muted">
-						Enterprises
+						Transactions
 					</h3>
 				</div>
 			</div>
@@ -40,7 +40,9 @@
 						<td th:text="${trans.amount}"></td>
 						<td th:date="${trans.updatedAt}"></td>
 						<td th:text="${trans.employee!=null}?${trans.employee.name}:''"></td>
-						<td ></td>
+						<td>
+							<button type="button" class="btn btn-sm btn-warning px-4 me-sm-3"><a th:href="@{/transaction/{id}/edit(id=${trans.id})}">Edit</a></button>
+						</td>
 						<td ></td>
 					</tr>
 				</table>

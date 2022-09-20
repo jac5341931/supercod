@@ -12,6 +12,7 @@ public class Profile {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+    @Column(name="username", unique = true)
     private String username;
     @Column(name = "image")
     private String image;
