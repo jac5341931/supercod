@@ -17,6 +17,7 @@ public class FrontController {
 
     @GetMapping("/")
     public String index() {
+
         return "index"; //Llamamos al HTML
     }
 
@@ -27,8 +28,16 @@ public class FrontController {
             System.out.println(principal.getClaims());
             //Profile profile = this.profileController.createProfile(principal.getClaims());
             model.addAttribute("user", principal.getClaims());
+            return  "user/index";
         }
-        return  "user/index";
+
+        return  "index";
+    }
+
+    @GetMapping("/user/index")
+    public String userIndex(Model model, @AuthenticationPrincipal OidcUser principal) {
+        model.addAttribute("user", principal.getClaims());
+        return "user/index"; //Llamamos al HTML
     }
 
 }

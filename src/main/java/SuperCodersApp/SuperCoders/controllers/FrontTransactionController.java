@@ -4,6 +4,8 @@ import SuperCodersApp.SuperCoders.entities.Employee;
 import SuperCodersApp.SuperCoders.entities.Enterprise;
 import SuperCodersApp.SuperCoders.entities.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.oauth2.core.oidc.user.OidcUser;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -24,7 +26,12 @@ public class FrontTransactionController {
     EnterpriseController enterpriseController;
 
     @GetMapping("/transaction")
-    public String getAllTransaction(Model model, @ModelAttribute("message") String message, @ModelAttribute("type") String type){
+    public String getAllTransaction(@AuthenticationPrincipal OidcUser principal, RedirectAttributes redirectAttributes,Model model, @ModelAttribute("message") String message, @ModelAttribute("type") String type){
+        //Validacion de acceso
+        if(principal == null){
+            redirectAttributes.addFlashAttribute("message", "Must be logged!");
+            return "redirect:/";
+        }
         List<Transaction> transactionList = this.transactionController.getAllTransaction();
         model.addAttribute("transactionList", transactionList);
        // model.addAttribute("employee", new Employee());
@@ -34,7 +41,12 @@ public class FrontTransactionController {
     }
 
     @GetMapping("/transaction/new")
-    public String addTransaction(Model model, @ModelAttribute("message") String message) {
+    public String addTransaction(@AuthenticationPrincipal OidcUser principal, RedirectAttributes redirectAttributes,Model model, @ModelAttribute("message") String message) {
+        //Validacion de acceso
+        if(principal == null){
+            redirectAttributes.addFlashAttribute("message", "Must be logged!");
+            return "redirect:/";
+        }
         Transaction transaction = new Transaction();
         List<Employee> employees = employeeController.getAllEmployee();
         List<Enterprise> enterprises = enterpriseController.getAllEnterprise();
@@ -46,7 +58,12 @@ public class FrontTransactionController {
     }
 
     @PostMapping("/transaction")
-    public String saveTransaction(Transaction transaction, RedirectAttributes redirectAttributes) {
+    public String saveTransaction(@AuthenticationPrincipal OidcUser principal, RedirectAttributes redirectAttributes,Transaction transaction) {
+        //Validacion de acceso
+        if(principal == null){
+            redirectAttributes.addFlashAttribute("message", "Must be logged!");
+            return "redirect:/";
+        }
         if (transactionController.createTransaction(transaction)) {
             redirectAttributes.addFlashAttribute("message", "saveOK");
             return "redirect:/transaction";
@@ -57,7 +74,12 @@ public class FrontTransactionController {
 
 
     @GetMapping("/transaction/{id}/edit")
-    public String editTransaction(Model model, @PathVariable long id, @ModelAttribute("message") String message) {
+    public String editTransaction(@AuthenticationPrincipal OidcUser principal, RedirectAttributes redirectAttributes,Model model, @PathVariable long id, @ModelAttribute("message") String message) {
+        //Validacion de acceso
+        if(principal == null){
+            redirectAttributes.addFlashAttribute("message", "Must be logged!");
+            return "redirect:/";
+        }
         Transaction transaction = transactionController.getTransaction(id);
         List<Employee> employees = employeeController.getAllEmployee();
         List<Enterprise> enterprises = enterpriseController.getAllEnterprise();
@@ -70,7 +92,12 @@ public class FrontTransactionController {
     }
 
     @PostMapping("/transaction/{id}")
-    public String updateTransaction(@PathVariable long id, @ModelAttribute("transaction") Transaction transaction, RedirectAttributes redirectAttributes) {
+    public String updateTransaction(@AuthenticationPrincipal OidcUser principal, RedirectAttributes redirectAttributes, @PathVariable long id, @ModelAttribute("transaction") Transaction transaction) {
+        //Validacion de acceso
+        if(principal == null){
+            redirectAttributes.addFlashAttribute("message", "Must be logged!");
+            return "redirect:/";
+        }
         if (transactionController.updateTransaction(id, transaction)) {
             redirectAttributes.addFlashAttribute("message", "updateOK");
             return "redirect:/transaction";

@@ -5,6 +5,11 @@
 
 <div class="container-fluid h-100 d-flex flex-column justify-content-center">
 	<header th:replace="~{/fragments/header2 :: header2}"></header>
+
+	<th:block th:if="${message != null}">
+		<div th:replace="~{/fragments/alert :: alert (message=${message})}">&nbsp;</div>
+	</th:block>
+
 	<div class="h-100 d-flex flex-row justify-content-start align-items-start">
 		<aside class="col-md-3 mx-auto">
 			<div th:insert="~{/fragments/sidebar :: sidebar}"></div>
@@ -15,13 +20,11 @@
 				<div class="align-items col-md-12 mt-5">
 					<h3 class="text-center text-muted">
 						<div sec:authorize="isAuthenticated()">
-							<h3 th:text="'Bienvenido, ' + ${user.getEmail()}"></h3>
+							<span th:text="'Bienvenido, ' + ${user.given_name}"></span>
 						</div>
 					</h3>
 				</div>
 			</div>
-
-			<
 			<!--FIN DEL CONTENIDO MODIFICABLE-->
 		</main>
 	</div>

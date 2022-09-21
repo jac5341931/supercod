@@ -3,6 +3,8 @@ package SuperCodersApp.SuperCoders.controllers;
 import SuperCodersApp.SuperCoders.entities.Employee;
 import SuperCodersApp.SuperCoders.entities.Enterprise;
 import SuperCodersApp.SuperCoders.entities.Profile;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.oauth2.core.oidc.user.OidcUser;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,7 +31,13 @@ public class FrontEmployeeController {
     }
 
     @GetMapping("/employee")
-    public String indexEmployee(Model model, @ModelAttribute("message") String message) {
+    public String indexEmployee(@AuthenticationPrincipal OidcUser principal, RedirectAttributes redirectAttributes, Model model, @ModelAttribute("message") String message) {
+        //Validacion de acceso
+        if(principal == null){
+            redirectAttributes.addFlashAttribute("message", "Must be logged!");
+            return "redirect:/";
+        }
+
         List<Employee> listEmployee = employeeController.getAllEmployee();
         model.addAttribute("listEmployee", listEmployee);
         model.addAttribute("message", message);
@@ -37,7 +45,13 @@ public class FrontEmployeeController {
     }
 
     @GetMapping("/employee/new")
-    public String addEmployee(Model model, @ModelAttribute("message") String message) {
+    public String addEmployee(@AuthenticationPrincipal OidcUser principal, RedirectAttributes redirectAttributes, Model model, @ModelAttribute("message") String message) {
+        //Validacion de acceso
+        if(principal == null){
+            redirectAttributes.addFlashAttribute("message", "Must be logged!");
+            return "redirect:/";
+        }
+
         Employee employee = new Employee();
         List<Enterprise> enterprises = enterpriseController.getAllEnterprise();
         List<Profile> profiles = profileController.getAllProfile();
@@ -49,7 +63,12 @@ public class FrontEmployeeController {
     }
 
     @PostMapping("/employee")
-    public String saveEmployee(Employee employee, RedirectAttributes redirectAttributes) {
+    public String saveEmployee(@AuthenticationPrincipal OidcUser principal, Employee employee, RedirectAttributes redirectAttributes) {
+        //Validacion de acceso
+        if(principal == null){
+            redirectAttributes.addFlashAttribute("message", "Must be logged!");
+            return "redirect:/";
+        }
         if (employeeController.createEmployee(employee)) {
             redirectAttributes.addFlashAttribute("message", "saveOK");
             return "redirect:/employee";
@@ -59,7 +78,12 @@ public class FrontEmployeeController {
     }
 
     @GetMapping("/employee/{id}/edit")
-    public String editEmployee(Model model, @PathVariable long id, @ModelAttribute("message") String message) {
+    public String editEmployee(@AuthenticationPrincipal OidcUser principal, RedirectAttributes redirectAttributes, Model model, @PathVariable long id, @ModelAttribute("message") String message) {
+        //Validacion de acceso
+        if(principal == null){
+            redirectAttributes.addFlashAttribute("message", "Must be logged!");
+            return "redirect:/";
+        }
         Employee employee = employeeController.getEmployee(id);
         List<Enterprise> enterprises = enterpriseController.getAllEnterprise();
         List<Profile> profiles = profileController.getAllProfile();
@@ -71,7 +95,12 @@ public class FrontEmployeeController {
     }
 
     @PostMapping("/employee/{id}")
-    public String updateEmployee(@PathVariable long id, @ModelAttribute("employee") Employee employee, RedirectAttributes redirectAttributes) {
+    public String updateEmployee(@AuthenticationPrincipal OidcUser principal, @PathVariable long id, @ModelAttribute("employee") Employee employee, RedirectAttributes redirectAttributes) {
+        //Validacion de acceso
+        if(principal == null){
+            redirectAttributes.addFlashAttribute("message", "Must be logged!");
+            return "redirect:/";
+        }
         if (employeeController.updateEmployee(id, employee)) {
             redirectAttributes.addFlashAttribute("message", "updateOK");
             return "redirect:/employee";
@@ -81,7 +110,12 @@ public class FrontEmployeeController {
     }
 
     @PostMapping("/employee/{id}/delete")
-    public String deleteEmployee(@PathVariable Integer id, RedirectAttributes redirectAttributes) {
+    public String deleteEmployee(@AuthenticationPrincipal OidcUser principal, @PathVariable Integer id, RedirectAttributes redirectAttributes) {
+        //Validacion de acceso
+        if(principal == null){
+            redirectAttributes.addFlashAttribute("message", "Must be logged!");
+            return "redirect:/";
+        }
         if (employeeController.deleteEmployee(id)) {
             redirectAttributes.addFlashAttribute("message", "deleteOK");
             return "redirect:/employee";

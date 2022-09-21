@@ -52,6 +52,12 @@
     <!-- ################################################################################################ -->
 </div>
 <!-- ##########################################iniciocards############################################## -->
+
+<th:block th:if="${message != null}">
+    <!-- /* The message code is returned from the @Controller */ -->
+    <div th:replace="~{/fragments/alert :: alert (message=${message})}">&nbsp;</div>
+</th:block>
+
 <div class="cards00">
     <div class="cards01">
         <img src="/img/ai.jpg" class="imagesCard1" alt="...">
@@ -196,6 +202,33 @@
 <!--
 <a id="backtotop" href="#top"><i class="fas fa-chevron-up"></i></a>-->
 
+<script th:inline="javascript">
+    window.onload=function(){
+
+        var msg = [[${message}]];
+        if (msg == "saveOK"){
+            Command : toastr["success"]("Empresa creada con éxito!")
+        }
+        else if (msg == "updateOK"){
+            Command : toastr["success"]("Empresa actualizada con éxito!")
+        }
+        else if (msg == "deleteOK"){
+            Command : toastr["error"]("Empresa eliminada con éxito!")
+        }
+        else if (msg == "deleteError"){
+            Command : toastr["error"]("Empresa no ha sido eliminada!")
+        }
+        toastr.options={
+            "positionClass": "toast-top-right",
+            "showDuration":"300",
+            "showMethod":"fadeIn",
+            "hideMethod":"fadeOut",
+        }
+
+
+    }
+
+</script>
 <!-- JAVASCRIPTS -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <script src="/layout/scripts/jquery.backtotop.js"></script>
