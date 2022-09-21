@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head th:replace="~{/fragments/head :: head}"></head>
+<body>
+
+<div class="container-fluid h-100 d-flex flex-column justify-content-center">
+	<header th:replace="~{/fragments/header2 :: header2}"></header>
+	<div class="h-100 d-flex flex-row justify-content-start align-items-start">
+		<aside class="col-md-3 mx-auto">
+			<div th:insert="~{/fragments/sidebar :: sidebar}"></div>
+		</aside>
+		<main class="content col-md-9 mx-auto">
+			<!--CONTENIDO MODIFICABLE-->
+			<div id="section-title" class="row">
+				<div class="align-items col-md-12 mt-5">
+					<h3 class="text-center text-muted">
+						<div sec:authorize="isAuthenticated()">
+							<h3 th:text="'Bienvenido, ' + ${user.getEmail()}"></h3>
+						</div>
+					</h3>
+				</div>
+			</div>
+
+			<
+			<!--FIN DEL CONTENIDO MODIFICABLE-->
+		</main>
+	</div>
+
+	<footer class="row d-flex">
+		<div th:insert="~{/fragments/footer :: copy}"></div>
+	</footer>
+</div>
+
+
+<script th:inline="javascript">
+	window.onload=function(){
+
+		var msg = [[${message}]];
+		if (msg == "saveOK"){
+			Command : toastr["success"]("Empresa creada con éxito!")
+		}
+		else if (msg == "updateOK"){
+			Command : toastr["success"]("Empresa actualizada con éxito!")
+		}
+		else if (msg == "deleteOK"){
+			Command : toastr["error"]("Empresa eliminada con éxito!")
+		}
+		else if (msg == "deleteError"){
+			Command : toastr["error"]("Empresa no ha sido eliminada!")
+		}
+		toastr.options={
+			"positionClass": "toast-top-right",
+			"showDuration":"300",
+			"showMethod":"fadeIn",
+			"hideMethod":"fadeOut",
+		}
+
+
+	}
+
+</script>
+
+</body>
+</html>

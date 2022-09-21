@@ -1,0 +1,17 @@
+# src/main/resources/application.yml
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          auth0:
+            client-id: ybttbyWmh1KNT5Oci8JNb27zOwiYjSjW
+            client-secret: 7whEiIpqyfk5Iq0tLwQWTW0tP7DBPGY3YKRLzwfCnzzFCa8pJxIaguKTa0W1FVLd
+            scope:
+              - openid
+              - profile
+              - email
+        provider:
+          auth0:
+            # trailing slash is important!
+            issuer-uri: https://erossiano.us.auth0.com/

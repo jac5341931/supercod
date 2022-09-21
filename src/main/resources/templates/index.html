@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <!-- To declare your language - read more here: https://www.w3.org/International/questions/qa-html-language-declarations -->
 <head th:insert="~{/fragments/head :: head}"></head>
 
@@ -21,8 +21,18 @@
         <!-- ################################################################################################ -->
         <nav id="mainav" class="fl_right">
             <!-- ##############################botoniniciosecion########################################################## -->
-            <ul class="clear">
-                <li><a href="inicioSesión.html">Iniciar Sesion</a></li>
+            <ul sec:authorize="isAuthenticated()" class="clear">
+                <li>
+                    <a th:href="@{/enterprise}" type="button" class="btn btn-outline-secondary btn-sm px-4">Enterprise</a>
+                </li>
+                <li>
+                    <a href="/logout" type="button" class="btn btn-outline-danger btn-sm px-4">Logout</a>
+                </li>
+            </ul>
+            <ul sec:authorize="!isAuthenticated()" class="clear">
+                <li>
+                    <a th:href="@{/oauth2/authorization/auth0}" type="button" class="btn btn-outline-secondarysm px-4">Log In</a>
+                </li>
             </ul>
             <!-- ################################################################################################ -->
         </nav>
