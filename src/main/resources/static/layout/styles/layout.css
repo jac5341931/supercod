@@ -396,12 +396,19 @@ table a, #comments a{background-color:inherit;}
 
 /* Max Wrapper Width - Laptop, Desktop etc.
 --------------------------------------------------------------------------------------------------------------- */
-@media screen and (min-width:1140px){
-	.hoc{max-width:1346px;}
+/*
+@media screen and (min-width:100%){
+	.hoc{max-width:100%;}
 }
+*/
 
+/*
 @media screen and (min-width:978px) and (max-width:1140px){
 	.hoc{max-width:125%;}
+}
+*/
+.hoc{
+	max-width:100% !important;
 }
 
 
