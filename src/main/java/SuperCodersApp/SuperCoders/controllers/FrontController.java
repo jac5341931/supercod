@@ -15,13 +15,6 @@ public class FrontController {
 
     ProfileController profileController;
     Profile profile;
-
-/*    @GetMapping("/")
-    public String index() {
-
-        return "index"; //Llamamos al HTML
-    }*/
-
     public FrontController(ProfileController profileController) {
         this.profileController = profileController;
     }
