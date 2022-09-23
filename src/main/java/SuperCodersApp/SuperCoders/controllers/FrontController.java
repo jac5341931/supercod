@@ -16,17 +16,16 @@ public class FrontController {
     ProfileController profileController;
     Profile profile;
 
-/*    @GetMapping("/")
+    @GetMapping({"/", "/index"})
     public String index() {
-
         return "index"; //Llamamos al HTML
-    }*/
+    }
 
     public FrontController(ProfileController profileController) {
         this.profileController = profileController;
     }
 
-    @GetMapping("/")
+    @GetMapping("/user/dashboard")
     public String index(Model model, @AuthenticationPrincipal OidcUser principal) {
         this.profile = new Profile();
         if(principal != null){
@@ -44,7 +43,7 @@ public class FrontController {
         return  "index";
     }
 
-    @GetMapping("/user/dashboard")
+    @GetMapping("/user")
     public String userDashboard(Model model, @AuthenticationPrincipal OidcUser principal) {
         if(principal != null){
             this.profile = new Profile();
