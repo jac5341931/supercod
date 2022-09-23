@@ -1,1 +1,1 @@
-web: java -Dserver.port=$PORT -jar build/libs/SuperCodersApp-0.0.1-SNAPSHOT.jar
+web: java -Dserver.port=$PORT -jar target/SuperCodersApp-0.0.1-SNAPSHOT.jar
