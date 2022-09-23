@@ -6,6 +6,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 //Generaliza la ruta a todos los metodos
@@ -18,7 +19,7 @@ public class ProfileController {
         this.profileService = profileService;
     }
 
-    @GetMapping
+    //@GetMapping
     public List<Profile> getAllProfile() {
         return this.profileService.getAllProfileS();
     }
@@ -28,9 +29,13 @@ public class ProfileController {
         return this.profileService.getProfileS(id);
     }
 
+    public Profile getProfileByOuth0Id(String Outh0Id){
+        return this.profileService.getProfileByOuth0IdIs(Outh0Id);
+    }
 
-    @PostMapping
-    public Boolean createProfile(@RequestBody Profile profile) {
+
+    //@PostMapping
+    public Profile createProfile(@RequestBody Profile profile) {
         return this.profileService.createProfileS(profile);
     }
 
@@ -51,5 +56,9 @@ public class ProfileController {
     @DeleteMapping("/{id}")
     public Boolean deleteProfile(@PathVariable("id") long id) {
         return this.profileService.deleteProfileS(id);
+    }
+
+    public Profile getOrCreateProfile(Map<String, Object> userData){
+        return this.profileService.getOrCreateProfileS(userData);
     }
 }

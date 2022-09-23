@@ -20,9 +20,25 @@
 				<div class="align-items col-md-12 mt-5">
 					<h3 class="text-center text-muted">
 						<div sec:authorize="isAuthenticated()">
-							<span th:text="'Bienvenido, ' + ${user.given_name}"></span>
+							<span th:text="'Bienvenido, ' + ${user.name}"></span>
 						</div>
 					</h3>
+
+					<div class="card mb-3" style="max-width: 540px;">
+						<div class="row g-0">
+							<div class="col-md-4">
+								<img th:src="@{${user.image}}" class="img-fluid rounded-circle" alt="...">
+							</div>
+							<div class="col-md-8">
+								<div class="card-body">
+									<h5 th:text="${user.name}" class="card-title">Card title</h5>
+									<p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+									<p th:alt="${user.nickname}" class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+								</div>
+							</div>
+						</div>
+					</div>
+
 				</div>
 			</div>
 			<!--FIN DEL CONTENIDO MODIFICABLE-->

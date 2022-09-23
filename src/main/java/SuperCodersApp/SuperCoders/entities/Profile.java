@@ -1,10 +1,6 @@
 package SuperCodersApp.SuperCoders.entities;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-
 import javax.persistence.*;
-import java.time.LocalDate;
-import java.util.List;
 
 @Entity
 @Table(name = "profile")
@@ -12,32 +8,51 @@ public class Profile {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-    @Column(name="username", unique = true)
-    private String username;
+
+    @Column(name="name")
+    private String name;
+    @Column(name="nickname", unique = true)
+    private String nickname;
+    @Column(name = "email", unique = true)
+    private String email;
     @Column(name = "image")
     private String image;
     @Column(name = "phone")
     private String phone;
-    @Column(name = "createdAt", updatable = false)
-    @JsonFormat(pattern="yyyy-MM-dd")
-    private LocalDate createdAt;
-    @Column(name = "updatedAt")
-    @JsonFormat(pattern="yyyy-MM-dd")
-    private LocalDate updatedAt;
+    @Column(name = "auth0Id", unique = true)
+    private String outh0Id;
+/*    @OneToOne(mappedBy = "profile", optional = true)
+    @JsonBackReference
+    private Employee employee;*/
 
-    @OneToOne //mapeada por los id de emprealdos
+    @OneToOne(fetch = FetchType.LAZY,
+            cascade =  CascadeType.ALL,
+            mappedBy = "profile")
     private Employee employee;
 
-    protected Profile(){
+
+    public Profile(){
     }
 
-    public Profile(long id, String username, String image, String phone, LocalDate createdAt, LocalDate updatedAt) {
-        this.id = id;
-        this.username = username;
+    public Profile(String name,String nickname, String email, String image, String phone, String outh0Id) {
+        this.name = name;
+        this.nickname = nickname;
+        this.email = email;
         this.image = image;
         this.phone = phone;
-        this.createdAt = createdAt;
-        this.updatedAt = updatedAt;
+        this.outh0Id = outh0Id;
+        this.employee = employee;
+    }
+
+    public Profile(long id, String name, String nickname, String email, String image, String phone, String outh0Id) {
+        this.id = id;
+        this.name = name;
+        this.nickname = nickname;
+        this.email = email;
+        this.image = image;
+        this.phone = phone;
+        this.outh0Id = outh0Id;
+        this.employee = employee;
     }
 
     public long getId() {
@@ -48,12 +63,30 @@ public class Profile {
         this.id = id;
     }
 
-    public String getUsername() {
-        return username;
+
+    public String getName() {
+        return name;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setName(String name) {
+        this.nickname = name;
+    }
+
+
+    public String getNickname() {
+        return nickname;
+    }
+
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getImage() {
@@ -72,15 +105,19 @@ public class Profile {
         this.phone = phone;
     }
 
-    public LocalDate getCreatedAt() {
-        return createdAt;
+    public String getOuth0Id() {
+        return outh0Id;
     }
 
-    public LocalDate getUpdatedAt() {
-        return updatedAt;
+    public void setOuth0Id(String outh0Id) {
+        this.outh0Id = outh0Id;
     }
 
-    public void setUpdatedAt(LocalDate updatedAt) {
-        this.updatedAt = updatedAt.now();
+    public Employee getEmployee() {
+        return employee;
+    }
+
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
     }
 }

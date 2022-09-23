@@ -54,7 +54,7 @@
                                 <select class="form-control" th:field="*{profile}" name="profile" id="profile">
                                     <th:block th:each="profile : ${profiles}">
                                         <option th:value="${profile.id}"
-                                                th:text="${profile.id} + ' | ' + ${profile.username}"/>
+                                                th:text="${profile.id} + ' | ' + ${profile.nickname}"/>
                                     </th:block>
                                 </select>
                             </div>

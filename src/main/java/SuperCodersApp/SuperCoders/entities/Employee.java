@@ -24,9 +24,13 @@ public class Employee {
     @JsonIgnoreProperties
     private Enterprise enterprise;
 
-    @JsonManagedReference
-    @OneToOne
-    @JoinColumn(name = "profile_id")
+    /*    @JsonManagedReference
+        @OneToOne
+        @JoinColumn(name = "profile_id", nullable = false)
+        //@OneToOne(mappedBy = "employee")
+        private Profile profile;*/
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "profile_id", nullable = false)
     private Profile profile;
 
     public Profile getProfile() {
@@ -39,7 +43,8 @@ public class Employee {
 
     public Employee() {
     }
-    public Employee(String name, String email, Profile profile,Enterprise enterprise) {
+
+    public Employee(String name, String email, Profile profile, Enterprise enterprise) {
         this.name = name;
         this.email = email;
         this.profile = profile;
@@ -50,9 +55,11 @@ public class Employee {
     public long getId() {
         return id;
     }
+
     public void setId(long id) {
         this.id = id;
     }
+
     public String getName() {
         return name;
     }

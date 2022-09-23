@@ -5,6 +5,7 @@ import SuperCodersApp.SuperCoders.repositories.IProfileRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class ProfileService implements IProfileService{
@@ -22,19 +23,12 @@ public class ProfileService implements IProfileService{
 
     @Override
     public Profile getProfileS(long id) {
-
         return this.profileRepository.findById(id);
     }
 
     @Override
-    public Boolean createProfileS(Profile profile) {
-        if(profile.getId() == 0L){
-            //employee.setId(0L);
-            this.profileRepository.save(profile);
-            return true;
-        }else{
-            return false;
-        }
+    public Profile createProfileS(Profile profile) {
+        return this.profileRepository.save(profile);
     }
 
     @Override
@@ -55,6 +49,35 @@ public class ProfileService implements IProfileService{
         }catch(Exception e){
             return false;
         }
+    }
+
+    @Override
+    public Profile getProfileByOuth0IdIs(String Outh0Id){
+        return this.profileRepository.findByOuth0IdIs(Outh0Id);
+    }
+
+    @Override
+    public Profile getProfileByEmailS(String email) {
+        return this.profileRepository.findByEmail(email);
+    }
+
+    public Profile getOrCreateProfileS(Map<String, Object> userData){
+        String email = (String) userData.get("email");
+        Profile user = getProfileByEmailS(email);
+
+        if(user==null){
+            String name = (String) userData.get("name");
+            String nickname = (String) userData.get("nickname");
+            String email1 = (String) userData.get("email");
+            String outh0Id = (String) userData.get("sub");
+            String image = (String) userData.get("picture");
+            String phone = (String) userData.get("phone");
+
+            Profile newUser = new Profile(name, nickname, email1, image, phone, outh0Id);
+            return createProfileS(newUser);
+        }
+
+        return user;
     }
 }
 
