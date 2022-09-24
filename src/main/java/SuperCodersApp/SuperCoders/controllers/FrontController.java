@@ -18,7 +18,7 @@ public class FrontController {
         this.profileController = profileController;
     }
 
-    @GetMapping({"","/"})
+    @GetMapping({"","/", "/index"})
     public String index(Model model) {
         return  "index";
     }
