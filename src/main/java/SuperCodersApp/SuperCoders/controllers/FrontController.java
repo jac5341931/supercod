@@ -22,8 +22,9 @@ public class FrontController {
 
     @GetMapping("/")
     public String index(Model model, @AuthenticationPrincipal OidcUser principal) {
-        this.profile = new Profile();
+
         if(principal != null){
+            this.profile = new Profile();
             System.out.println(principal.getClaims());
             this.profile = this.profileController.getOrCreateProfile(principal.getClaims());
             model.addAttribute("user", this.profile);
