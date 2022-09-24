@@ -20,7 +20,7 @@ public class FrontController {
 
     @GetMapping({"","/", "/index"})
     public String index(Model model) {
-        return  "index";
+        return  "/index";
     }
 
    /* @GetMapping("/")
