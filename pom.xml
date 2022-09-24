@@ -74,8 +74,8 @@
 						</goals>
 						<configuration>
 							<additionalProperties>
-								<encoding.source>${project.build.sourceEncoding}</encoding.source>
-								<encoding.reporting>${project.reporting.outputEncoding}</encoding.reporting>
+								<encoding.source>UTF-8</encoding.source>
+								<encoding.reporting>UTF-8</encoding.reporting>
 								<java.source>${maven.compiler.source}</java.source>
 								<java.source>${maven.compiler.target}</java.source>
 							</additionalProperties>
