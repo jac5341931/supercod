@@ -20,6 +20,11 @@ public class FrontController {
     }
 
     @GetMapping("/")
+    public String index(Model model) {
+        return  "index";
+    }
+
+   /* @GetMapping("/")
     public String index(Model model, @AuthenticationPrincipal OidcUser principal) {
 
         if(principal != null){
@@ -31,7 +36,7 @@ public class FrontController {
         }
 
         return  "index";
-    }
+    }*/
 
     @GetMapping("/user")
     public String userDashboard(Model model, @AuthenticationPrincipal OidcUser principal) {
