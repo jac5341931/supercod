@@ -8,7 +8,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 
-
 @Controller
 public class FrontController {
 
@@ -19,7 +18,7 @@ public class FrontController {
         this.profileController = profileController;
     }
 
-    @GetMapping("/")
+    @GetMapping({"","/"})
     public String index(Model model) {
         return  "index";
     }
