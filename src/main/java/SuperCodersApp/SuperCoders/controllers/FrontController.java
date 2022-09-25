@@ -38,7 +38,7 @@ public class FrontController {
 
         return  "home";
     }
-
+/*
     @GetMapping("/user")
     public String userDashboard(Model model, @AuthenticationPrincipal OidcUser principal) {
         if(principal != null){
@@ -49,7 +49,7 @@ public class FrontController {
 
         model.addAttribute("user", principal.getClaims());
         return "user/dashboard"; //Llamamos al HTML
-    }
+    }*/
 
 /*    @RequestMapping("/error")
     public String handleError(HttpServletRequest request) {
