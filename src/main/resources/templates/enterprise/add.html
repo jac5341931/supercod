@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" >
-<head th:replace="~{/fragments/head :: head}"></head>
+<head th:replace="~{fragments/head :: head}"></head>
 
 <body>
 
 <div class="container-fluid h-100 d-flex flex-column justify-content-center">
-    <header th:replace="~{/fragments/header2 :: header2}"></header>
+    <header th:replace="~{fragments/header2 :: header2}"></header>
 
     <th:block th:if="${message != null}">
-        <div th:replace="~{/fragments/alert :: alert (message=${message})}">&nbsp;</div>
+        <div th:replace="~{fragments/alert :: alert (message=${message})}">&nbsp;</div>
     </th:block>
 
     <div class="h-100 d-flex flex-row justify-content-start align-items-start">
         <aside class="col-md-3 mx-auto">
-            <div th:insert="~{/fragments/sidebar :: sidebar}"></div>
+            <div th:insert="~{fragments/sidebar :: sidebar}"></div>
         </aside>
         <main class="content col-md-9 mx-auto">
             <!--CONTENIDO MODIFICABLE-->
@@ -86,7 +86,7 @@
     </div>
 
     <footer class="row d-flex">
-        <div th:insert="~{/fragments/footer :: copy}"></div>
+        <div th:insert="~{fragments/footer :: copy}"></div>
     </footer>
 </div>
 

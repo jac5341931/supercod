@@ -2,7 +2,7 @@
 
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <!-- To declare your language - read more here: https://www.w3.org/International/questions/qa-html-language-declarations -->
-<head th:insert="~{/fragments/head :: head}"></head>
+<head th:insert="~{fragments/head :: head}"></head>
 
 <body id="top">
 
@@ -55,7 +55,7 @@
 
 <th:block th:if="${message != null}">
     <!-- /* The message code is returned from the @Controller */ -->
-    <div th:replace="~{/fragments/alert :: alert (message=${message})}">&nbsp;</div>
+    <div th:replace="~{fragments/alert :: alert (message=${message})}">&nbsp;</div>
 </th:block>
 
 <div class="cards00">
@@ -198,7 +198,7 @@
     </div>
 </div>
 
-<div th:insert="~{/fragments/footer :: copy}"></div>
+<div th:insert="~{fragments/footer :: copy}"></div>
 <!--
 <a id="backtotop" href="#top"><i class="fas fa-chevron-up"></i></a>-->
 
@@ -237,7 +237,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.6/umd/popper.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-<script src="js/plugin.js"></script>
+<!--<script src="js/plugin.js"></script>-->
 <!-- sidebar -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
 <script src="/js/custom.js"></script>
