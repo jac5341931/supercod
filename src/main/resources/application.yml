@@ -5,8 +5,9 @@ spring:
       client:
         registration:
           auth0:
-            client-id: ybttbyWmh1KNT5Oci8JNb27zOwiYjSjW
-            client-secret: 7whEiIpqyfk5Iq0tLwQWTW0tP7DBPGY3YKRLzwfCnzzFCa8pJxIaguKTa0W1FVLd
+            client-id: QkUPyRUjiuZEc3wIMZbiLkjEdEhNaZrC
+            client-secret: MkgfkQOk64KJPrnnSIktMsD5_6FIUXrTfd8-rMphqHxk3cc3JwOg3i3zIWgOCdgu
+
             scope:
               - openid
               - profile
@@ -14,4 +15,4 @@ spring:
         provider:
           auth0:
             # trailing slash is important!
-            issuer-uri: https://erossiano.us.auth0.com/
+            issuer-uri: https://dev-5i1yoc5n.us.auth0.com/
