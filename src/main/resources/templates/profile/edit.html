@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<head th:replace="~{fragments/head :: head}"></head>
+
+<body>
+
+<div class="container-fluid h-100 d-flex flex-column justify-content-center">
+    <header th:replace="~{fragments/header2 :: header2}"></header>
+
+    <th:block th:if="${message != null}">
+        <div th:replace="~{fragments/alert :: alert (message=${message})}">&nbsp;</div>
+    </th:block>
+
+    <div class="h-100 d-flex flex-row justify-content-start align-items-start">
+        <aside class="col-md-3 mx-auto">
+            <div th:insert="~{fragments/sidebar :: sidebar}"></div>
+        </aside>
+        <main class="content col-md-9 mx-auto">
+            <!--CONTENIDO MODIFICABLE-->
+            <div id="section-title" class="row">
+                <div class="align-items col-md-12 mt-5">
+                    <h3 class="text-center text-muted">
+                        Edit Employee data
+                    </h3>
+                </div>
+            </div>
+
+            <div id="section-data" class="row">
+                <div class="col-md-12">
+
+                    <form th:action="@{/employee/{id}(id=${employee.id})}" th:object="${employee}" th:method="patch">
+
+                        <!--Campo para id-->
+                        <div class="row">
+                            <div class="form-group col-md-12">
+                                <label class="col-md-3" for="id">ID:</label>
+                                <div class="col-md-6">
+                                    <input type="text" th:field="*{id}" class="form-control" id="id" required="required" readonly></div>
+                            </div>
+                        </div>
+
+                        <!--Campo para nombre-->
+                        <div class="row">
+                            <div class="form-group col-md-12">
+                                <label class="col-md-3" for="name">Name:</label>
+                                <div class="col-md-6">
+                                    <input type="text" th:field="*{name}" class="form-control" id="name" required="required"></div>
+                            </div>
+                        </div>
+
+                        <!--Campo para direccion-->
+                        <div class="row">
+                            <div class="form-group col-md-12">
+                                <label class="col-md-3" for="email">Email:</label>
+                                <div class="col-md-6">
+                                    <input type="text" th:field="*{email}" class="form-control" id="email" required="required"></div>
+                            </div>
+                        </div>
+
+                        <!--Campo para telefono-->
+                        <div class="form-group col-md-12">
+                            <label class="col-md-3" for="profile">Profile:</label>
+                            <div class="col-md-6">
+                                <select class="form-control" th:field="*{profile}" name="profile" id="profile">
+                                    <th:block th:each="profile : ${profiles}">
+                                        <option th:value="${profile.id}"
+                                                th:text="${profile.id} + ' | ' + ${profile.nickname}"/>
+                                    </th:block>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!--Campo para NIT-->
+                        <div class="form-group col-md-12">
+                            <label class="col-md-3" for="role">Role:</label>
+                            <div class="col-md-6">
+                                <select class="form-control" name="role" id="role" th:field="*{role}">
+                                    <th:block th:each="rol : ${T(SuperCodersApp.SuperCoders.entities.Role).values}">
+                                        <option th:value="${rol}"
+                                                th:text="${rol}"/>
+                                    </th:block>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!--Campo para NIT-->
+                        <div class="form-group col-md-12">
+                            <label class="col-md-3" for="enterprise">Enterprise:</label>
+                            <div class="col-md-6">
+                                <select class="form-control" name="enterprise" id="enterprise">
+                                    <th:block th:each="enterprise : ${enterprises}">
+                                        <option th:value="${enterprise.id}"
+                                                th:text="${enterprise.id} + ' | ' + ${enterprise.name}"/>
+                                    </th:block>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="row mt-3">
+                            <div class="col-md-2">
+                                <!--<button id="btnDone" type="submit" class="btn btn-primary btn-lg px-4 me-sm-3">Update</button>-->
+                                <button class="btn btn-success">Update</button>
+                            </div>
+                            <div class="col-md-2">
+                                <a th:href="@{/employee}" class="btn btn-info" role="button">Back</a>
+                            </div>
+                        </div>
+
+                    </form>
+
+                </div>
+            </div>
+            <!--FIN DEL CONTENIDO MODIFICABLE-->
+        </main>
+    </div>
+
+    <footer class="row d-flex">
+        <div th:insert="~{fragments/footer :: copy}"></div>
+    </footer>
+</div>
+
+
+<script th:inline="javascript">
+    window.onload=function(){
+
+        var msg = [[${message}]];
+        if (msg == "saveOK"){
+            Command : toastr["success"]("Empresa creada con éxito!")
+        }
+        else if (msg == "updateOK"){
+            Command : toastr["success"]("Empresa actualizada con éxito!")
+        }
+        else if (msg == "deleteOK"){
+            Command : toastr["error"]("Empresa eliminada con éxito!")
+        }
+        else if (msg == "deleteError"){
+            Command : toastr["error"]("Empresa no ha sido eliminada!")
+        }
+        toastr.options={
+            "positionClass": "toast-top-right",
+            "showDuration":"300",
+            "showMethod":"fadeIn",
+            "hideMethod":"fadeOut",
+        }
+
+
+    }
+
+</script>
+
+</body>
+</html>
