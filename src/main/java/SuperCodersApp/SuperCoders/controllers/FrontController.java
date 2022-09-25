@@ -20,12 +20,12 @@ public class FrontController {
         this.profileController = profileController;
     }
 
-    @GetMapping({"","/", "/index"})
+/*    @GetMapping({"","/", "/index"})
     public String index(Model model) {
         return  "home";
-    }
+    }*/
 
-   /* @GetMapping("/")
+    @GetMapping("/")
     public String index(Model model, @AuthenticationPrincipal OidcUser principal) {
 
         if(principal != null){
@@ -36,8 +36,8 @@ public class FrontController {
             return "user/dashboard";
         }
 
-        return  "index";
-    }*/
+        return  "home";
+    }
 
     @GetMapping("/user")
     public String userDashboard(Model model, @AuthenticationPrincipal OidcUser principal) {
