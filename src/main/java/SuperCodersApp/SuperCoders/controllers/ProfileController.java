@@ -1,5 +1,6 @@
 package SuperCodersApp.SuperCoders.controllers;
 
+import SuperCodersApp.SuperCoders.entities.Employee;
 import SuperCodersApp.SuperCoders.entities.Profile;
 import SuperCodersApp.SuperCoders.services.ProfileService;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -23,6 +24,11 @@ public class ProfileController {
     public List<Profile> getAllProfile() {
         return this.profileService.getAllProfileS();
     }
+
+    public List<Profile> getAllProfileWithoutEmployee() {
+        return this.profileService.getProfilesByEmployeeIsNull();
+    }
+
 
     @GetMapping("/{id}")
     public Profile getProfile(@PathVariable("id") long id) {

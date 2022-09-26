@@ -1,6 +1,7 @@
 package SuperCodersApp.SuperCoders.services;
 
 import SuperCodersApp.SuperCoders.entities.Employee;
+import SuperCodersApp.SuperCoders.entities.Profile;
 import SuperCodersApp.SuperCoders.repositories.IEmployeeRepository;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +20,10 @@ public class EmployeeService implements IEmployeeService{
     @Override
     public List<Employee> getAllEmployeeS() {
         return this.employeeRepository.findAll();
+    }
+
+    public List<Employee> getEmployeesByProfileIsNullS() {
+        return this.employeeRepository.findEmployeesByProfileIsNull();
     }
 
     @Override

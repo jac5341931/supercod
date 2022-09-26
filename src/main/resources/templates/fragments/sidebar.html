@@ -2,19 +2,20 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <body>
 <div  th:fragment="sidebar" id="sidebar" class="d-flex text-center">
+    <div sec:authorize="isAuthenticated()">
+        <div class="border-end bg-white" id="sidebar-wrapper">
+            <div class="sidebar-heading border-bottom bg-light">Menu</div>
 
-    <div class="border-end bg-white" id="sidebar-wrapper">
-        <div class="sidebar-heading border-bottom bg-light">Menu</div>
-        <div class="list-group list-group-flush">
-            <a class="list-group-item list-group-item-action list-group-item-light p-2" th:href="@{/transaction}" >Transaction</a>
-            <a class="list-group-item list-group-item-action list-group-item-light p-2" th:href="@{/employee}">Employees</a>
-            <a class="list-group-item list-group-item-action list-group-item-light p-2" th:href="@{/enterprise}">Enterprises</a>
-            <div sec:authorize="isAuthenticated()">
+            <div class="list-group list-group-flush">
+                <a class="list-group-item list-group-item-action list-group-item-light p-2" th:href="@{/enterprise}">Enterprises</a>
+                <a class="list-group-item list-group-item-action list-group-item-light p-2" th:href="@{/profile}">Profile</a>
+                <a class="list-group-item list-group-item-action list-group-item-light p-2" th:href="@{/employee}">Employees</a>
+                <a class="list-group-item list-group-item-action list-group-item-light p-2" th:href="@{/transaction}" >Transaction</a>
+
                 <a class="list-group-item list-group-item-action list-group-item-danger p-2" href="/logout" type="button">Logout</a>
             </div>
         </div>
     </div>
-
 </div>
 </body>
 </html>

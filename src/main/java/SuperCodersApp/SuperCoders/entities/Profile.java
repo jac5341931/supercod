@@ -1,6 +1,8 @@
 package SuperCodersApp.SuperCoders.entities;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "profile")
@@ -28,13 +30,16 @@ public class Profile {
     @OneToOne(fetch = FetchType.LAZY,
             cascade =  CascadeType.ALL,
             mappedBy = "profile")
+    @JoinColumn(name = "employee_id")
     private Employee employee;
 
-
+    @Column(name = "role")
+    @Enumerated(EnumType.ORDINAL)
+    private Role role;
     public Profile(){
     }
 
-    public Profile(String name,String nickname, String email, String image, String phone, String outh0Id) {
+    public Profile(String name,String nickname, String email, String image, String phone, String outh0Id, Employee employee) {
         this.name = name;
         this.nickname = nickname;
         this.email = email;
@@ -42,9 +47,10 @@ public class Profile {
         this.phone = phone;
         this.outh0Id = outh0Id;
         this.employee = employee;
+        this.role = Role.Operator;
     }
 
-    public Profile(long id, String name, String nickname, String email, String image, String phone, String outh0Id) {
+    public Profile(long id, String name, String nickname, String email, String image, String phone, String outh0Id,Employee employee) {
         this.id = id;
         this.name = name;
         this.nickname = nickname;
@@ -52,7 +58,16 @@ public class Profile {
         this.image = image;
         this.phone = phone;
         this.outh0Id = outh0Id;
-        this.employee = employee;
+        this.employee= employee;
+        this.role = Role.Operator;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
     }
 
     public long getId() {
@@ -69,7 +84,7 @@ public class Profile {
     }
 
     public void setName(String name) {
-        this.nickname = name;
+        this.name = name;
     }
 
 

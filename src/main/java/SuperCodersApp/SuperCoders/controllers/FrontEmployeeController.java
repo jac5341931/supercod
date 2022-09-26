@@ -54,7 +54,7 @@ public class FrontEmployeeController {
 
         Employee employee = new Employee();
         List<Enterprise> enterprises = enterpriseController.getAllEnterprise();
-        List<Profile> profiles = profileController.getAllProfile();
+        List<Profile> profiles = profileController.getAllProfileWithoutEmployee();
         model.addAttribute("employee", employee);
         model.addAttribute("enterprises", enterprises);
         model.addAttribute("profiles", profiles);
@@ -86,7 +86,7 @@ public class FrontEmployeeController {
         }
         Employee employee = employeeController.getEmployee(id);
         List<Enterprise> enterprises = enterpriseController.getAllEnterprise();
-        List<Profile> profiles = profileController.getAllProfile();
+        List<Profile> profiles = profileController.getAllProfileWithoutEmployee();
         model.addAttribute("employee", employee);
         model.addAttribute("enterprises", enterprises);
         model.addAttribute("profiles", profiles);

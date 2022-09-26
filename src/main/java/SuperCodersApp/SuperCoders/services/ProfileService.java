@@ -1,5 +1,6 @@
 package SuperCodersApp.SuperCoders.services;
 
+import SuperCodersApp.SuperCoders.entities.Employee;
 import SuperCodersApp.SuperCoders.entities.Profile;
 import SuperCodersApp.SuperCoders.repositories.IProfileRepository;
 import org.springframework.stereotype.Service;
@@ -19,6 +20,10 @@ public class ProfileService implements IProfileService{
     @Override
     public List<Profile> getAllProfileS() {
         return this.profileRepository.findAll();
+    }
+
+    public List<Profile> getProfilesByEmployeeIsNull() {
+        return this.profileRepository.findProfilesByEmployeeIsNull();
     }
 
     @Override
@@ -64,6 +69,7 @@ public class ProfileService implements IProfileService{
     public Profile getOrCreateProfileS(Map<String, Object> userData){
         String email = (String) userData.get("email");
         Profile user = getProfileByEmailS(email);
+        Employee employee= null;
 
         if(user==null){
             String name = (String) userData.get("name");
@@ -73,10 +79,9 @@ public class ProfileService implements IProfileService{
             String image = (String) userData.get("picture");
             String phone = (String) userData.get("phone");
 
-            Profile newUser = new Profile(name, nickname, email1, image, phone, outh0Id);
+            Profile newUser = new Profile(name, nickname, email1, image, phone,outh0Id,employee);
             return createProfileS(newUser);
         }
-
         return user;
     }
 }

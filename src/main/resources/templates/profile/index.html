@@ -20,7 +20,7 @@
             <div id="section-title" class="row">
                 <div class="align-items col-md-12 mt-5">
                     <h3 class="text-center text-muted">
-                        Enterprises
+                        Profiles
                     </h3>
                 </div>
             </div>
@@ -30,10 +30,11 @@
                     <tr>
                         <th>ID</th>
                         <th>Name</th>
+                        <th>Nickname</th>
                         <th>Email</th>
-                        <th>Profile</th>
-                        <th>Role</th>
-                        <th>Enterprise</th>
+                        <th>Picture</th>
+                        <th>Phone</th>
+                        <th>Employee</th>
                         <th>Edit</th>
                         <th>Delete</th>
 
@@ -41,24 +42,28 @@
 
                     <!--Llenamos la tabla dibujada-->
                     <!--En nuestro controller, creamos en viewEmpresa un modelo con un atributo llamado emplist donde esta guardada la lista de todas las empresas-->
-                    <tr th:each="employee : ${listEmployee}">
-                        <td th:text="${employee.id}"></td>
-                        <td th:text="${employee.name}"></td>
-                        <td th:text="${employee.email}"></td>
-                        <td th:text="${employee.profile.nickname}"></td>
-                        <td th:text="${employee.role}"></td>
-                        <td th:text="${employee.enterprise.name}"></td>
+                    <tr th:each="profile : ${listProfile}">
+                        <td th:text="${profile.id}"></td>
+                        <td th:text="${profile.name}"></td>
+                        <td th:text="${profile.nickname}"></td>
+                        <td th:text="${profile.email}"></td>
+                        <td >
+                            <img th:src="@{${profile.image}}" style="height:30px; width:30px" class="rounded-circle" th:alt="${profile.name}">
+                        </td>
+                        <td th:text="${profile.phone}"></td>
 
-                        <td><button type="button" class="btn btn-warning px-4 me-sm-3"><a th:href="@{/employee/{id}/edit(id=${employee.id})}">Edit</a></button></td>
+                        <td th:text="${profile.employee}? 'Assigned' : 'Unassigned'"></td>
+
+                        <td><button type="button" class="btn btn-warning px-4 me-sm-3"><a th:href="@{/profile/{id}/edit(id=${profile.id})}">Edit</a></button></td>
                         <td>
-                            <form th:action="@{/employee/{id}/delete(id=${employee.id})}" th:method="post">
+                            <form th:action="@{/profile/{id}/delete(id=${profile.id})}" th:method="post">
                                 <button id="btnDelete" type="submit" class="btn btn-danger px-4 me-sm-3">Delete</button>
                             </form>
                         </td>
                     </tr>
                 </table>
 
-                <button type="button" class="btn btn-success"><a th:href="@{/employee/new}">Add employee</a></button>
+                <button type="button" class="btn btn-success"><a th:href="@{/profile/new}">Add profile</a></button>
             </div>
             <!--FIN DEL CONTENIDO MODIFICABLE-->
         </main>

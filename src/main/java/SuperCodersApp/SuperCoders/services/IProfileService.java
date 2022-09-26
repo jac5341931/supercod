@@ -1,5 +1,6 @@
 package SuperCodersApp.SuperCoders.services;
 
+import SuperCodersApp.SuperCoders.entities.Employee;
 import SuperCodersApp.SuperCoders.entities.Profile;
 
 import java.util.List;
@@ -7,6 +8,7 @@ import java.util.Map;
 
 public interface IProfileService {
     List<Profile> getAllProfileS();
+    List<Profile> getProfilesByEmployeeIsNull();
     Profile getProfileS(long id);
     Profile getProfileByOuth0IdIs(String Outh0Id);
     Profile getProfileByEmailS(String email);

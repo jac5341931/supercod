@@ -20,6 +20,9 @@ public class EmployeeController {
         return this.employeeService.getAllEmployeeS();
     }
 
+    public List<Employee> getAllEmployeeWithoutProfile(){
+        return this.employeeService.getEmployeesByProfileIsNullS();
+    }
     //@GetMapping("/{id}")
     public Employee getEmployee(@PathVariable("id") long id){
         return this.employeeService.getEmployeeS(id);

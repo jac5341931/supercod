@@ -20,7 +20,7 @@
             <div id="section-title" class="row">
                 <div class="align-items col-md-12 mt-5">
                     <h3 class="text-center text-muted">
-                        Edit Employee data
+                        Edit Profile data
                     </h3>
                 </div>
             </div>
@@ -28,17 +28,15 @@
             <div id="section-data" class="row">
                 <div class="col-md-12">
 
-                    <form th:action="@{/employee/{id}(id=${employee.id})}" th:object="${employee}" th:method="patch">
+                    <form th:action="@{/profile/{id}(id=${profile.id})}" th:object="${profile}" th:method="patch">
 
-                        <!--Campo para id-->
                         <div class="row">
                             <div class="form-group col-md-12">
-                                <label class="col-md-3" for="id">ID:</label>
+                                <label class="col-md-3" for="name">Id:</label>
                                 <div class="col-md-6">
                                     <input type="text" th:field="*{id}" class="form-control" id="id" required="required" readonly></div>
                             </div>
                         </div>
-
                         <!--Campo para nombre-->
                         <div class="row">
                             <div class="form-group col-md-12">
@@ -47,7 +45,14 @@
                                     <input type="text" th:field="*{name}" class="form-control" id="name" required="required"></div>
                             </div>
                         </div>
-
+                        <!--Campo para nombre-->
+                        <div class="row">
+                            <div class="form-group col-md-12">
+                                <label class="col-md-3" for="name">Nickname:</label>
+                                <div class="col-md-6">
+                                    <input type="text" th:field="*{nickname}" class="form-control" id="nickname" required="required"></div>
+                            </div>
+                        </div>
                         <!--Campo para direccion-->
                         <div class="row">
                             <div class="form-group col-md-12">
@@ -57,40 +62,43 @@
                             </div>
                         </div>
 
+                        <div class="row">
+                            <div class="form-group col-md-12">
+                                <label class="col-md-3" for="email">Image URL:</label>
+                                <div class="col-md-6">
+                                    <input th:type="url" th:field="*{image}" class="form-control" id="image"></div>
+                            </div>
+                        </div>
+
                         <!--Campo para telefono-->
-                        <div class="form-group col-md-12">
-                            <label class="col-md-3" for="profile">Profile:</label>
-                            <div class="col-md-6">
-                                <select class="form-control" th:field="*{profile}" name="profile" id="profile">
-                                    <th:block th:each="profile : ${profiles}">
-                                        <option th:value="${profile.id}"
-                                                th:text="${profile.id} + ' | ' + ${profile.nickname}"/>
-                                    </th:block>
-                                </select>
+                        <div class="row">
+                            <div class="form-group col-md-12">
+                                <label class="col-md-3" for="email">Phone:</label>
+                                <div class="col-md-6">
+                                    <input type="text" th:field="*{phone}" class="form-control" id="phone" required="required"></div>
                             </div>
                         </div>
-
-                        <!--Campo para NIT-->
-                        <div class="form-group col-md-12">
-                            <label class="col-md-3" for="role">Role:</label>
-                            <div class="col-md-6">
-                                <select class="form-control" name="role" id="role" th:field="*{role}">
-                                    <th:block th:each="rol : ${T(SuperCodersApp.SuperCoders.entities.Role).values}">
-                                        <option th:value="${rol}"
-                                                th:text="${rol}"/>
+                        <!--<div class="row">
+                            <div class="form-group col-md-12">
+                                <label class="col-md-3" for="email">Employee id:</label>
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" id="employee" th:field="*{employee}" readonly>
+                                    <th:block th:if="*{employee}">
+                                        <a th:href="@{/employee/{id}/edit(id=*{employee.id})}" >View Employee</a>
                                     </th:block>
-                                </select>
+                                </div>
                             </div>
-                        </div>
-
-                        <!--Campo para NIT-->
+                        </div>-->
                         <div class="form-group col-md-12">
-                            <label class="col-md-3" for="enterprise">Enterprise:</label>
+                            <label class="col-md-3" for="employees">Employees:</label>
                             <div class="col-md-6">
-                                <select class="form-control" name="enterprise" id="enterprise">
-                                    <th:block th:each="enterprise : ${enterprises}">
-                                        <option th:value="${enterprise.id}"
-                                                th:text="${enterprise.id} + ' | ' + ${enterprise.name}"/>
+                                <select class="form-control" name="employees" id="employees">
+
+                                    <th:block th:each=" employee: ${employee}">
+                                        <option th:selected="${transaction.employee.id} eq ${empl.id}"
+                                                th:value="${employee.id}"
+                                                th:text="${employee.id} + ' | ' + ${employee.name}"/>
+
                                     </th:block>
                                 </select>
                             </div>
@@ -102,7 +110,7 @@
                                 <button class="btn btn-success">Update</button>
                             </div>
                             <div class="col-md-2">
-                                <a th:href="@{/employee}" class="btn btn-info" role="button">Back</a>
+                                <a th:href="@{/profile}" class="btn btn-info" role="button">Back</a>
                             </div>
                         </div>
 
