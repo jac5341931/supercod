@@ -7,7 +7,6 @@ spring:
           auth0:
             client-id: QkUPyRUjiuZEc3wIMZbiLkjEdEhNaZrC
             client-secret: MkgfkQOk64KJPrnnSIktMsD5_6FIUXrTfd8-rMphqHxk3cc3JwOg3i3zIWgOCdgu
-
             scope:
               - openid
               - profile
